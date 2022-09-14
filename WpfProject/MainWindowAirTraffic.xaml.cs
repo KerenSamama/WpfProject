@@ -118,19 +118,20 @@ namespace AirTrafficProject
 
         void addNewPolyLine(List<Trail> Route)
         {
+            // design of the route
             MapPolyline polyline = new MapPolyline();
-            //polyline.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
             polyline.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
             polyline.StrokeThickness = 1;
             polyline.Opacity = 0.7;
             polyline.Locations = new LocationCollection();
             foreach (var item in Route)
             {
+
                 polyline.Locations.Add(new Location(item.lat, item.lng));
             }
 
-            myMap.Children.Clear();
-            myMap.Children.Add(polyline);
+            myMap.Children.Clear(); // clear every line in the map
+            myMap.Children.Add(polyline); // add the new line
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

@@ -13,11 +13,11 @@ namespace BL
     {
         //GetWeatherInfo
         //GetCalendarInfo
-        FlightVisibleInfo GetVisibleInfo(string key);
-        FlightVisibleInfo getVisibleFromFlight(Flight myFlight);
+        FlightInfoPartial GetVisibleInfo(string key);
+        FlightInfoPartial getVisibleFromFlight(Root myFlight);
 
-        List<FlightSummarize> getAllFlights();
-        Flight GetFlightByKey(string key);
+        List<FlightRecap> getAllFlights();
+        Root GetFlightByKey(string key);
         string getHoliday();
 
     }
