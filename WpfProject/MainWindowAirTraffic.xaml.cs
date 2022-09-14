@@ -15,7 +15,8 @@ using System.Windows.Shapes;
 using BE;
 using Microsoft.Maps.MapControl.WPF;
 using System.Windows.Threading;
-using AirTraficPrototype.Converters;
+using DAL;
+
 
 
 namespace AirTrafficProject

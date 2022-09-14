@@ -6,18 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using BE;
+using Nancy.Json;
+
 
 namespace DAL
 {
-    public class TrafficAdapter 
+    public class TrafficAdapter
     {
         // link of a list with all the flights, untight, we dont know where is the info
         private const string AllURL = @" https://data-cloud.flightradar24.com/zones/fcgi/feed.js?faa=1&bounds=38.805%2C24.785%2C29.014%2C40.505&satellite=1&mlat=1&flarm=1&adsb=1&gnd=1&air=1&vehicles=1&estimated=1&maxage=14400&gliders=1&stats=1";
         // link that gives to us the details of the flights which is after the =, tight serialization
         private const string FlightURL = @"https://data-live.flightradar24.com/clickhandler/?version=1.5&flight=";
-        
+
         public Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights()
         {
+            //Deserialization of json file
 
             Dictionary<string, List<FlightInfoPartial>> Result = new Dictionary<string, List<FlightInfoPartial>>();//belongs to BL
             JObject AllFlightData = null;
@@ -31,7 +34,7 @@ namespace DAL
             {
                 var json = webClient.DownloadString(AllURL);
 
-                HelperClass Helper = new HelperClass(); 
+                HelperClass Helper = new HelperClass();
                 AllFlightData = JObject.Parse(json); // convert the jason to data
 
                 try
@@ -45,7 +48,7 @@ namespace DAL
                         if (item.Value[11].ToString() == "TLV") Outgoing.Add(new FlightInfoPartial { Id = -1, Source = item.Value[11].ToString(), Destination = item.Value[12].ToString(), SourceId = key, Long = Convert.ToDouble(item.Value[1]), Lat = Convert.ToDouble(item.Value[2]), DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])), FlightCode = item.Value[13].ToString() });
                         // incomimg flights, checks if the destination is tlv
                         if (item.Value[12].ToString() == "TLV") Incoming.Add(new FlightInfoPartial { Id = -1, Source = item.Value[11].ToString(), Destination = item.Value[12].ToString(), SourceId = key, Long = Convert.ToDouble(item.Value[1]), Lat = Convert.ToDouble(item.Value[2]), DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])), FlightCode = item.Value[13].ToString() });
-                        
+
                     }
                 }
                 catch (Exception e)
@@ -84,4 +87,5 @@ namespace DAL
             }
             return CurrentFlight;
         }
+    }
 }

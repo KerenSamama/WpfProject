@@ -9,6 +9,7 @@ using BE;
 
 namespace BL
 {
+    /*
     public interface IBL
     {
         //GetWeatherInfo
@@ -21,4 +22,5 @@ namespace BL
         string getHoliday();
 
     }
+    */
 }

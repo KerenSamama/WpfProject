@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BE;
 
 namespace HebDates
 {
@@ -38,7 +38,7 @@ namespace HebDates
                 var dd = date.ToString("dd");
                 string URL = $"https://www.hebcal.com/converter?cfg=json&date={yyyy}-{mm}-{dd}&g2h=1&strict=1"; 
                 var json = await webClient.DownloadStringTaskAsync(URL);
-                Root Data = JsonConvert.DeserializeObject<Root>(json);
+                RootHeb Data = JsonConvert.DeserializeObject<RootHeb>(json);
                 MessageBox.Show(Data.events[0].Contains("Erev") ? "ערב חג" : "יום רגיל");
             }
         }
