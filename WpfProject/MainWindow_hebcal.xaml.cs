@@ -22,7 +22,7 @@ namespace HebDates
     /// </summary>
     public partial class MainWindow : Window
     {
-        string URL1 = "https://www.hebcal.com/converter?cfg=json&date=2021-09-07&g2h=1&strict=1";
+     
         public MainWindow()
         {
             InitializeComponent();

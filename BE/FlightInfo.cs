@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+// tous les vols possible
 namespace BE
 {
     public class Aircraft
     {
-        //Cette classe nous donne le modele d'un avion
+       
        
         public Model model { get; set; }
         public int countryId { get; set; }

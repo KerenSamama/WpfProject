@@ -86,8 +86,8 @@
             <TextBlock Text="{Binding status.text}"/>
             <TextBlock Text="{Binding time.estimated.arrival, Converter = {StaticResource TickConvert}}"/>
         </StackPanel>
-       
-        <m:Map x:Name="myMap" CredentialsProvider="ApINLKklvvkm_3CQRgDQ2s-J4VMwZ1PzoRJ_guhxBVIGnlNYyTIfNhBQOlFeMlfR" Margin="10,10,410.667,43" ZoomLevel="5.0" Center="32.000454,34.870743" AnimationLevel="None" MouseDown="Pin_MouseDown" Grid.Column="2" Grid.Row="1"/>
+
+        <m:Map x:Name="myMap" CredentialsProvider="AqE_0hHQMLVjHSiX3mcf_JQWTuWuoWpyJD7n8PP-e_G3eq7wCEYEl12YHlpMMaCf" Margin="10,10,410.667,43" ZoomLevel="5.0" Center="32.000454,34.870743" AnimationLevel="None" MouseDown="Pin_MouseDown" Grid.Column="2" Grid.Row="1"/>
         <!--event MouseDown="Pin_MouseDown"-->
     </Grid>
 

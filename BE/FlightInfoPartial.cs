@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//Cette classe nous donne des infos partielle pour le vol c'est ce qui s'affiche sur la page
+//Cette classe nous donne des infos pour les vols qui entre et qui sortent
 namespace BE
 {
     // Translation of the json of flighradar24, helps to know which flights are interesting for us

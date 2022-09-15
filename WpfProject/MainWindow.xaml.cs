@@ -111,7 +111,7 @@ namespace AirTrafficProject
 
         private void Pin_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var pin = e.OriginalSource as Pushpin;
+            Pushpin pin = e.OriginalSource as Pushpin;
             if(pin!=null)
                 MessageBox.Show(pin.ToolTip.ToString());
         }
