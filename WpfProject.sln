@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30711.63
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "WpfProject\PL.csproj", "{6B10A657-FC9A-4FAD-BD29-03AAE96D6ECF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{816B47AC-1D4F-45C5-A834-2CC46EB4EDBE} = {816B47AC-1D4F-45C5-A834-2CC46EB4EDBE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{816B47AC-1D4F-45C5-A834-2CC46EB4EDBE}"
 EndProject

@@ -12,20 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DAL;
 using BE;
 using Microsoft.Maps.MapControl.WPF;
 using System.Windows.Threading;
-using AirTraficPrototype.Converters;
-namespace WpfProject
+using DAL;
+
+
+
+namespace AirTrafficProject
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         FlightInfoPartial SelectedFlight = null; //Selected Flight
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -34,10 +36,10 @@ namespace WpfProject
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            
             //load current data
             TrafficAdapter dal = new TrafficAdapter();
-            var FlightKeys = dal.GetCurrentFlights();
+            var FlightKeys = dal.GetCurrentFlights(); // gets the flight according to the key
 
             // this.DataContext = FlightKeys;
             InFlightsListBox.DataContext = FlightKeys["Incoming"];
@@ -102,7 +104,7 @@ namespace WpfProject
                 //PinCurrent.MouseDown += Pin_MouseDown;
 
                 myMap.Children.Add(PinOrigin);
-                myMap.Children.Add(PinCurrent);
+                myMap.Children.Add(PinCurrent); 
 
             }
         }
@@ -110,26 +112,27 @@ namespace WpfProject
         private void Pin_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var pin = e.OriginalSource as Pushpin;
-            if (pin != null)
+            if(pin!=null)
                 MessageBox.Show(pin.ToolTip.ToString());
         }
 
 
         void addNewPolyLine(List<Trail> Route)
         {
+            // design of the route
             MapPolyline polyline = new MapPolyline();
-            //polyline.Fill = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
             polyline.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
             polyline.StrokeThickness = 1;
             polyline.Opacity = 0.7;
             polyline.Locations = new LocationCollection();
             foreach (var item in Route)
             {
+
                 polyline.Locations.Add(new Location(item.lat, item.lng));
             }
 
-            myMap.Children.Clear();
-            myMap.Children.Add(polyline);
+            myMap.Children.Clear(); // clear every line in the map
+            myMap.Children.Add(polyline); // add the new line
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -147,3 +150,4 @@ namespace WpfProject
         }
     }
 }
+

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace AirTraficPrototype.Converters
+namespace PL
 {
     public class TickToDateTimeConverter : IValueConverter
     {

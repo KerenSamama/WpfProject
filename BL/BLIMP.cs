@@ -8,8 +8,8 @@ using BE;
 
 namespace BL
 {
-    public class BLIMP : IBL
-    {
+   /* public class BLIMP : IBL
+    
         public IDAL dal { get; set; }
         public BLIMP()
         {
@@ -18,7 +18,7 @@ namespace BL
 
         #region Flights
 
-        public List<FlightInfoPartial> getAllFlights()
+        public List<BE.FlightInfoPartial> getAllFlights()
         {
             return dal.getAllFlightsSummarize();
         }
@@ -27,21 +27,21 @@ namespace BL
         {
             return dal.GetFlightByKey(key);
         }
-        public FlightVisibleInfo GetVisibleInfo(string key)
+        public FlightInfoPartial GetVisibleInfo(string key)
         {
             return getVisibleFromFlight(dal.GetFlightByKey(key));
         }
 
-        public FlightVisibleInfo getVisibleFromFlight(Flight myFlight)
+        public FlightInfoPartial getVisibleFromFlight(Root myFlight)
         {
-            FlightVisibleInfo flightVisibleInfo = new FlightVisibleInfo();
+            FlightInfoPartial flightVisibleInfo = new FlightInfoPartial();
             HelperClass helperClass = new HelperClass();
             try
             {
                 if (myFlight.identification != null)
                 {
                     flightVisibleInfo.Id = myFlight.identification.id;
-                    flightVisibleInfo.AbrFlightCode = myFlight.identification.number.@default;
+                    flightVisibleInfo.FlightCode = myFlight.identification.number.@default;
                     flightVisibleInfo.FullFlightCode = myFlight.identification.callsign;
                 }
                 if (myFlight.airline != null)
@@ -97,5 +97,5 @@ namespace BL
             return dal.getEvent(DateTime.Today, DateTime.Today.AddDays(7));
         }
         #endregion
-    }
+    }*/
 }
