@@ -9,18 +9,25 @@ using BE;
 
 namespace BL
 {
-    /*
+    
     public interface IBL
     {
+       
+
+        Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights();
+
+        Flight GetFlightData(string Key);
+
+
         //GetWeatherInfo
         //GetCalendarInfo
-        FlightInfoPartial GetVisibleInfo(string key);
-        FlightInfoPartial getVisibleFromFlight(Root myFlight);
+        //  FlightInfoPartial GetVisibleInfo(string key);
+        //  FlightInfoPartial getVisibleFromFlight(Root myFlight);
 
-        List<FlightRecap> getAllFlights();
-        Root GetFlightByKey(string key);
-        string getHoliday();
+        //   List<FlightRecap> getAllFlights();
+        // Root GetFlightByKey(string key);
+        //  string getHoliday();
 
     }
-    */
+    
 }

@@ -44,7 +44,7 @@ namespace AirTrafficProject
             // this.DataContext = FlightKeys;
             InFlightsListBox.DataContext = FlightKeys["Incoming"];
             OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
-
+            
         }
 
         private void FlightsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

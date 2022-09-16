@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 // tous les vols possible
 namespace BE
 {
@@ -187,7 +183,7 @@ namespace BE
         public string city { get; set; }
     }
 
-    public class Root
+    public class Flight
     {
         public Identification identification { get; set; }
         public Status status { get; set; }

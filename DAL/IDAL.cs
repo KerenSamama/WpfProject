@@ -11,17 +11,27 @@ namespace DAL
 {
     public interface IDAL
     {
-       Dictionary<string, List<BE.FlightInfoPartial>> GetCurrentFlights();
-       BE.Root GetFlightData(string Key);
 
 
-           // List<FlightSummarize> getAllFlightsSummarize();
+        #region Flights
+
+        Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights(); // tous les vols 
+
+
+
+        Flight GetFlightData(string Key); //Un vol
+
+        #endregion
+
+
+
+
+        // List<FlightSummarize> getAllFlightsSummarize();
         //    Flight GetFlightByKey(string key);
 
-         //   string getEvent(DateTime start, DateTime end);
-            //Weather getWeather(Location location)();
-            //HebEvent getHebevent(Date date)();
-        
+        //   string getEvent(DateTime start, DateTime end);
+        //Weather getWeather(Location location)();
+        //HebEvent getHebevent(Date date)();
 
 
 
@@ -29,6 +39,7 @@ namespace DAL
 
 
 
-    }  
+
+    }
 }
 

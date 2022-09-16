@@ -20,7 +20,7 @@ namespace DAL
 
         public Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights()
         {
-            //Deserialization of json file
+           //Deserialization of json file
 
             Dictionary<string, List<FlightInfoPartial>> Result = new Dictionary<string, List<FlightInfoPartial>>();//belongs to BL
             JObject AllFlightData = null;
@@ -66,10 +66,10 @@ namespace DAL
         //Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
         //change root name to FlightData
 
-        public Root GetFlightData(string Key)
+        public Flight GetFlightData(string Key)
         {
             var CurrentUrl = FlightURL + Key;
-            Root CurrentFlight = null;
+            Flight CurrentFlight = null;
             //must use try-catch
             using (var webClient = new System.Net.WebClient())
             {
@@ -77,7 +77,7 @@ namespace DAL
                 try
                 {
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    CurrentFlight = serializer.Deserialize<Root>(json);
+                    CurrentFlight = serializer.Deserialize<Flight>(json);
                 }
                 catch (Exception e)
                 {
