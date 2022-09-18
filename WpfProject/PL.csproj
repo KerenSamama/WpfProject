@@ -93,18 +93,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="HebCal\HebCalModel.cs" />
+    <Compile Include="HebCal\HebCalViewModel.cs" />
+    <Compile Include="MainWindow\MainWindowViewModel.cs" />
+    <Compile Include="MainWindow\MainWindowModel.cs" />
+    <Compile Include="MainWindow\MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow_hebcal.xaml.cs">
-      <DependentUpon>MainWindow_hebcal.xaml</DependentUpon>
+    <Compile Include="HebCal\HebCalView.xaml.cs">
+      <DependentUpon>HebCalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="converters\TickToDateTimeConverter.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="MainWindow\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MainWindow_hebcal.xaml">
+    <Page Include="HebCal\HebCalView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
