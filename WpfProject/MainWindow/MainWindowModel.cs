@@ -4,10 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using BL;
 
-namespace PL
+namespace PL.MainWindow
 {
     public class MainWindowModel 
     {
+        IBL BL;
+
+        public MainWindowModel()
+        {
+            BL = new BLIMP();
+        }
+
+
     }
 }
