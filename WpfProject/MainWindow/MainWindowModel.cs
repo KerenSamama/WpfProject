@@ -7,7 +7,7 @@ using BE;
 
 namespace PL
 {
-    internal MainWindowModel 
+    public class MainWindowModel 
     {
     }
 }
