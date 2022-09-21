@@ -15,16 +15,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BE;
 
-namespace HebDates
+
+namespace PL
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public  partial class HebCalView: Window
     {
-     
-        public MainWindow()
+        public HebCalViewModel hcViewModel;
+        public HebCalView()
         {
+            hcViewModel = new HebCalViewModel();    
             InitializeComponent();
         }
 

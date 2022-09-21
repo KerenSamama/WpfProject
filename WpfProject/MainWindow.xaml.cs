@@ -19,7 +19,7 @@ using DAL;
 
 
 
-namespace AirTrafficProject
+namespace PL
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

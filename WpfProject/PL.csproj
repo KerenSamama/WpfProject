@@ -95,16 +95,14 @@
     </Compile>
     <Compile Include="HebCal\HebCalModel.cs" />
     <Compile Include="HebCal\HebCalViewModel.cs" />
-    <Compile Include="MainWindow\MainWindowViewModel.cs" />
-    <Compile Include="MainWindow\MainWindowModel.cs" />
-    <Compile Include="MainWindow\MainWindowView.xaml.cs">
-      <DependentUpon>MainWindowView.xaml</DependentUpon>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="HebCal\HebCalView.xaml.cs">
       <DependentUpon>HebCalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="converters\TickToDateTimeConverter.cs" />
-    <Page Include="MainWindow\MainWindowView.xaml">
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -144,6 +142,10 @@
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{a4112d4c-8984-4235-9de5-92f7e2ba80ff}</Project>
       <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{816b47ac-1d4f-45c5-a834-2cc46eb4edbe}</Project>
+      <Name>BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{eb5a98fd-f88f-44c4-a44c-a8d2f167be93}</Project>

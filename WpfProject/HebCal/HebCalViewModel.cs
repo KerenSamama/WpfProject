@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using BL;
 
 namespace PL
 
 {
-    internal class HebCalViewModel
+    public class HebCalViewModel
     {
+        
+
     }
 }
