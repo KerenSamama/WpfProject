@@ -33,16 +33,30 @@ namespace PL
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             DateTime date = OriginalDate.SelectedDate.Value;
+
             using (var webClient = new System.Net.WebClient())
             {
-                var yyyy = date.ToString("yyyy");
-                var mm = date.ToString("MM");
-                var dd = date.ToString("dd");
-                string URL = $"https://www.hebcal.com/converter?cfg=json&date={yyyy}-{mm}-{dd}&g2h=1&strict=1"; 
-                var json = await webClient.DownloadStringTaskAsync(URL);
-                RootHeb Data = JsonConvert.DeserializeObject<RootHeb>(json);
-                MessageBox.Show(Data.events[0].Contains("Erev") ? "ערב חג" : "יום רגיל");
+                int i = 0;
+                string yyyy,mm,dd,URL;
+                 RootHeb Data;
+
+                for(DateTime date1 = date.AddDays(7) ; date.CompareTo(date1) != 1 ; date = date.AddDays(1),i++) { 
+                    yyyy = date.ToString("yyyy");
+                    mm = date.ToString("MM");
+                    dd = date.ToString("dd");
+
+                    URL = $"https://www.hebcal.com/converter?cfg=json&date={yyyy}-{mm}-{dd}&g2h=1&strict=1"; 
+                   var json = await webClient.DownloadStringTaskAsync(URL);
+                
+                    Data = JsonConvert.DeserializeObject<RootHeb>(json);
+
+                    if (Data.events[0].Contains("Erev")) { 
+                          MessageBox.Show( "ערב חג " + (i>0?": חג בעוד "+(i+1)+" ימים ":""));
+                          return;
+                        }
+                    }
             }
+            MessageBox.Show("יום רגיל");
         }
     }
 }

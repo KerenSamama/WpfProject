@@ -30,38 +30,34 @@ namespace PL
         
         public MainWindow()
         {
+            
             InitializeComponent();
+     
         }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ReadAllButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            //load current data
-            TrafficAdapter dal = new TrafficAdapter();
-            var FlightKeys = dal.GetCurrentFlights(); // gets the flight according to the key
+          TrafficAdapter dal = new TrafficAdapter();
+             var FlightKeys = dal.GetCurrentFlights(); // gets the flight according to the key
 
             // this.DataContext = FlightKeys;
             InFlightsListBox.DataContext = FlightKeys["Incoming"];
             OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
-            
+            //load current data
         }
 
         private void FlightsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SelectedFlight = e.AddedItems[0] as FlightInfoPartial; //InFlightsListBox.SelectedItem as FlightInfoPartial;
             UpdateFlight(SelectedFlight);
-
         }
 
         private void UpdateFlight(FlightInfoPartial selected)
         {
-            TrafficAdapter dal = new TrafficAdapter();
+        TrafficAdapter dal = new TrafficAdapter();
             var Flight = dal.GetFlightData(selected.SourceId);
 
             DetailsPanel.DataContext = Flight;
-
-
 
             // Update map
             if (Flight != null)
@@ -75,22 +71,19 @@ namespace PL
                 //MessageBox.Show(Flight.airport.destination.code.iata);
                 Trail CurrentPlace = null;
 
-                Pushpin PinCurrent = new Pushpin { ToolTip = selected.FlightCode };
-                Pushpin PinOrigin = new Pushpin { ToolTip = Flight.airport.origin.name };
+                Pushpin PinCurrent = new Pushpin { ToolTip = selected.FlightCode },
+                        PinOrigin  = new Pushpin { ToolTip = Flight.airport.origin.name };
 
                 PositionOrigin origin = new PositionOrigin { X = 0.4, Y = 0.4 };
                 MapLayer.SetPositionOrigin(PinCurrent, origin);
 
-
                 //Better to use RenderTransform
+                
                 if (Flight.airport.destination.code.iata == "TLV")
-                {
                     PinCurrent.Style = (Style)Resources["ToIsrael"];
-                }
+                
                 else
-                {
                     PinCurrent.Style = (Style)Resources["FromIsrael"];
-                }
 
                 CurrentPlace = OrderedPlaces.Last<Trail>();
                 var PlaneLocation = new Location { Latitude = CurrentPlace.lat, Longitude = CurrentPlace.lng };
@@ -115,7 +108,6 @@ namespace PL
             if(pin!=null)
                 MessageBox.Show(pin.ToolTip.ToString());
         }
-
 
         void addNewPolyLine(List<Trail> Route)
         {

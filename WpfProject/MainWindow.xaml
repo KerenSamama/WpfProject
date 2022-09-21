@@ -51,7 +51,7 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="1258.667"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Read All" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Width="123" Height="40" Click="Button_Click" />
+        <Button Name="ReadAllButton" Content="Read All" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Width="123" Height="40" Click="ReadAllButton_Click" />
         <ListBox ItemsSource="{Binding}" Name="InFlightsListBox" HorizontalAlignment="Left" Height="100" Margin="31,54,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" SelectionChanged="FlightsListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>

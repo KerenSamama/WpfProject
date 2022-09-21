@@ -27,8 +27,7 @@ namespace DAL
             IList<string> Keys = null;
             IList<Object> Values = null;
 
-            List<FlightInfoPartial> Incoming = new List<FlightInfoPartial>();
-            List<FlightInfoPartial> Outgoing = new List<FlightInfoPartial>();
+            List<FlightInfoPartial> Incoming = new List<FlightInfoPartial>(), Outgoing = new List<FlightInfoPartial>();
 
             using (var webClient = new System.Net.WebClient()) // able to do a http request
             {
@@ -39,16 +38,38 @@ namespace DAL
 
                 try
                 {
+                    int From = 11, To = 12;
+                    String FromSource, Arrival;
+
                     foreach (var item in AllFlightData) // for each item in the data, for each flight
                     {
                         var key = item.Key;
-                        if (key == "full_count") continue;
-                        if (key == "version") continue;
+                        if (key == "full_count" || key == "version" ) continue;
+                       
                         // 11 is the source in the array, we create an object with every 
-                        if (item.Value[11].ToString() == "TLV") Outgoing.Add(new FlightInfoPartial { Id = -1, Source = item.Value[11].ToString(), Destination = item.Value[12].ToString(), SourceId = key, Long = Convert.ToDouble(item.Value[1]), Lat = Convert.ToDouble(item.Value[2]), DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])), FlightCode = item.Value[13].ToString() });
-                        // incomimg flights, checks if the destination is tlv
-                        if (item.Value[12].ToString() == "TLV") Incoming.Add(new FlightInfoPartial { Id = -1, Source = item.Value[11].ToString(), Destination = item.Value[12].ToString(), SourceId = key, Long = Convert.ToDouble(item.Value[1]), Lat = Convert.ToDouble(item.Value[2]), DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])), FlightCode = item.Value[13].ToString() });
+                        FromSource = item.Value[From].ToString();
+                        Arrival = item.Value[To].ToString();
 
+                        if (FromSource=="" ||  Arrival =="")
+                            continue;
+                        if (FromSource == "TLV" || Arrival== "TLV") {
+
+                            FlightInfoPartial flightInfo = new FlightInfoPartial {
+                                    Id = -1, 
+                                    Source = FromSource,
+                                    Destination = Arrival,
+                                    SourceId = key,
+                                    Long = Convert.ToDouble(item.Value[1]),
+                                    Lat  = Convert.ToDouble(item.Value[2]), 
+                                    DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])),
+                                    FlightCode = item.Value[13].ToString() };
+
+                            if (FromSource == "TLV" ) 
+                                Outgoing.Add(flightInfo);
+
+                            else if (Arrival== "TLV")
+                               Incoming.Add(flightInfo);
+                         } 
                     }
                 }
                 catch (Exception e)
