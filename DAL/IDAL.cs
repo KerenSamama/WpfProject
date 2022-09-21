@@ -26,7 +26,8 @@ namespace DAL
 
 
 
-        // List<FlightSummarize> getAllFlightsSummarize();
+        // List<FlightRecap> getAllFlightsSummarize();
+        
         //    Flight GetFlightByKey(string key);
 
         //   string getEvent(DateTime start, DateTime end);

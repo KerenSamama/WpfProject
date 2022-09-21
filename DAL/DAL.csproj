@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarAdapter.cs" />
     <Compile Include="TrafficAdapter.cs" />
     <Compile Include="HelperClass.cs" />
     <Compile Include="DALIMP.cs" />

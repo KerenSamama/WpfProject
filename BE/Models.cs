@@ -32,4 +32,13 @@ namespace BE
 
 
     }
+
+    public class Calendar
+    {
+        public List<HeDateParts> days { get; set; }
+
+        public Calendar() { days = new List<HeDateParts>(); }
+    }
+
+
 }

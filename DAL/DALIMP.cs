@@ -28,7 +28,8 @@ namespace DAL
         //LA FONCTION POUR RECUPERER TOUS LES VOLS, IL FAUT CHANGER LE NOM
 
         public
-         Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights()
+            
+        Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights()
            {
                return trafficAdapter.GetCurrentFlights();
            }
