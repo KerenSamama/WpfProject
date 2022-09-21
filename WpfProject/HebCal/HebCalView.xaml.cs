@@ -38,7 +38,7 @@ namespace PL
             {
                 int i = 0;
                 string yyyy,mm,dd,URL;
-                 RootHeb Data;
+                RootHeb Data;
 
                 for(DateTime date1 = date.AddDays(7) ; date.CompareTo(date1) != 1 ; date = date.AddDays(1),i++) { 
                     yyyy = date.ToString("yyyy");
@@ -49,12 +49,17 @@ namespace PL
                    var json = await webClient.DownloadStringTaskAsync(URL);
                 
                     Data = JsonConvert.DeserializeObject<RootHeb>(json);
-
-                    if (Data.events[0].Contains("Erev")) { 
-                          MessageBox.Show( "ערב חג " + (i>0?": חג בעוד "+(i+1)+" ימים ":""));
-                          return;
+                    if(Data.events.Count > 1) { 
+                        
+                        if (Data.events[0].Contains("Erev")) {
+                              MessageBox.Show( "ערב חג : " + (i>0? " חג בעוד "+(i+1)+" ימים ":"") +"\n"+ Data.events[0].Substring(5));
+                             
+                        else 
+                              MessageBox.Show( " חג היום :\n " + Data.events[0]);
+                         return;
                         }
-                    }
+                    
+                }
             }
             MessageBox.Show("יום רגיל");
         }
