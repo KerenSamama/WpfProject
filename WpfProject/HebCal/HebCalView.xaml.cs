@@ -51,13 +51,13 @@ namespace PL
                     Data = JsonConvert.DeserializeObject<RootHeb>(json);
                     if(Data.events.Count > 1) { 
                         
-                        if (Data.events[0].Contains("Erev")) {
+                        if (Data.events[0].Contains("Erev")) 
                               MessageBox.Show( "ערב חג : " + (i>0? " חג בעוד "+(i+1)+" ימים ":"") +"\n"+ Data.events[0].Substring(5));
                              
                         else 
                               MessageBox.Show( " חג היום :\n " + Data.events[0]);
                          return;
-                        }
+                        
                     
                 }
             }
@@ -65,3 +65,4 @@ namespace PL
         }
     }
 }
+    }
