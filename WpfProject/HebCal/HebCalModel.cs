@@ -8,7 +8,7 @@ using BL;
 
 namespace PL
 {
-    internal class HebCalModel
+    public class HebCalModel
     {
         IBL BL;
 
