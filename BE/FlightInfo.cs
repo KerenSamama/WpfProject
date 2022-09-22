@@ -256,6 +256,46 @@ namespace BE
         public int ts { get; set; }
         public int hd { get; set; }
     }
+    /*
+    public class Weather { 
+        public string cod { get; set; }
+        public int message { get; set; }
+        public int cnt { get; set; }
+        public List<DetailWeather> list{ get; set; }
 
+}
 
+    public class DetailWeather
+    {
+        public int dt { get; set; }
+        public List<DetailWeatherData> main { get; set; }
+    }
+
+    public class DetailWeatherData //main
+    {
+        TemperatureDetails temperatureDetails;
+    }
+    public class TemperatureDetails
+    {
+        public float temp { get; set; }
+        public float feels_like { get; set; }
+        public float temp_min { get; set; }
+        public float temp_max { get; set; }
+        public int pressure { get; set; }
+        public int sea_level { get; set; }
+        public int grnd_level { get; set; }
+        public int humidity { get; set; }
+        public float temp_kf { get; set; }
+
+    }
+
+    public class WeatherData
+    {
+          public int id { get; set; }
+          public string main { get; set; }
+          public string description  { get; set; }
+          public string icon { get; set; }
+
+    }
+    */
 }

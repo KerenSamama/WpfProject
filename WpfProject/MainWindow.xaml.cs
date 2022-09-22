@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json;
 using BE;
 using Microsoft.Maps.MapControl.WPF;
 using System.Windows.Threading;
@@ -27,6 +28,7 @@ namespace PL
     public partial class MainWindow : Window
     {
         FlightInfoPartial SelectedFlight = null; //Selected Flight
+        TrafficAdapter dal = new TrafficAdapter();
         
         public MainWindow()
         {
@@ -37,11 +39,10 @@ namespace PL
 
         private void ReadAllButton_Click(object sender, RoutedEventArgs e)
         {
-          TrafficAdapter dal = new TrafficAdapter();
              var FlightKeys = dal.GetCurrentFlights(); // gets the flight according to the key
 
             // this.DataContext = FlightKeys;
-            InFlightsListBox.DataContext = FlightKeys["Incoming"];
+            InFlightsListBox.DataContext  = FlightKeys["Incoming"];
             OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
             //load current data
         }
@@ -52,9 +53,8 @@ namespace PL
             UpdateFlight(SelectedFlight);
         }
 
-        private void UpdateFlight(FlightInfoPartial selected)
+        private async void UpdateFlight(FlightInfoPartial selected)
         {
-        TrafficAdapter dal = new TrafficAdapter();
             var Flight = dal.GetFlightData(selected.SourceId);
 
             DetailsPanel.DataContext = Flight;
@@ -99,6 +99,24 @@ namespace PL
                 myMap.Children.Add(PinOrigin);
                 myMap.Children.Add(PinCurrent); 
 
+
+            /*weather*/
+            using (var webClient = new System.Net.WebClient())
+            {
+            string URL = $"https://api.openweathermap.org/data/2.5/forecast?lat={selected.Lat}&lon={selected.Long}&cnt=1&appid=88107aa04053a4cf2c34e7962481c7e3&units=metric"; 
+            var json = await webClient.DownloadStringTaskAsync(URL);
+            string temp = json.Substring(json.IndexOf("temp")+6,4);
+            TemperatureLabel.Content = "Weather : " + temp + "°C - ";
+            json = json.Substring(json.IndexOf("weather")+6);
+            json = json.Substring(json.IndexOf("main")+7);
+            string weather = json.Substring(0,json.IndexOf(",")-1);
+            TemperatureLabel.Content += weather;
+
+
+}
+
+
+
             }
         }
 
@@ -119,7 +137,6 @@ namespace PL
             polyline.Locations = new LocationCollection();
             foreach (var item in Route)
             {
-
                 polyline.Locations.Add(new Location(item.lat, item.lng));
             }
 
