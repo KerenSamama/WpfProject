@@ -21,7 +21,7 @@ namespace DAL
        // public DALIMP() { }
       
             TrafficAdapter trafficAdapter = new TrafficAdapter();
-        //  CalendarAdapter calendarAdapter = new CalendarAdapter();
+            CalendarAdapter calendarAdapter = new CalendarAdapter();
 
 
 
@@ -41,7 +41,7 @@ namespace DAL
              {
                return trafficAdapter.GetFlightData(Key);
               }
-         
+
 
 
         //LA FONCTION POUR RECUPERER LE CALENDRIER
@@ -68,6 +68,14 @@ namespace DAL
         return null;
         */
 
+        // Function that returns all the flights between two dates
+        /*Dictionary<string, List<FlightInfoPartial>> GetTwoDatesFlights(DateTime startDate, DateTime endDate)
+        {
+           foreach (Flight flight in trafficAdapter.GetFlightData)
+                
+            
+
+        }*/
 
     }
 }
