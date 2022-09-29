@@ -25,7 +25,6 @@ namespace DAL
             Dictionary<string, List<FlightInfoPartial>> Result = new Dictionary<string, List<FlightInfoPartial>>();//belongs to BL
             JObject AllFlightData = null;
            
-
             List<FlightInfoPartial> Incoming = new List<FlightInfoPartial>(), Outgoing = new List<FlightInfoPartial>();
 
             using (var webClient = new System.Net.WebClient()) // able to do a http request
@@ -97,7 +96,7 @@ namespace DAL
                 try
                 {
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    CurrentFlight = serializer.Deserialize<Flight>(json);
+                    CurrentFlight = serializer.Deserialize<Flight>(json); //erreur qui revien ici
                 }
                 catch (Exception e)
                 {
