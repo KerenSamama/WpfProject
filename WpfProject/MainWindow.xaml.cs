@@ -35,7 +35,9 @@ namespace PL
             InitializeComponent();
             WeatherGrid.Visibility = Visibility.Hidden;
             Border.Visibility = Visibility.Hidden;
-
+            UpdateWeatherTLV();
+            Border_Copy.Visibility = Visibility.Hidden;
+            WeatherGrid1.Visibility = Visibility.Hidden;
         }
 
         private void ReadAllButton_Click(object sender, RoutedEventArgs e)
@@ -61,6 +63,8 @@ namespace PL
             SelectedFlight = e.AddedItems[0] as FlightInfoPartial; //InFlightsListBox.SelectedItem as FlightInfoPartial;
             UpdateFlight(SelectedFlight);
             UpdateWeather(SelectedFlight);
+            Border_Copy.Visibility = Visibility.Visible;
+            WeatherGrid1.Visibility = Visibility.Visible;
         }
         private async void UpdateWeather(FlightInfoPartial selected)
         {
@@ -81,21 +85,51 @@ namespace PL
                 Border.Visibility = Visibility.Visible;
                 WeatherGrid.Visibility = Visibility.Visible;
 
-                if (weather == "Clear")
+                string imagePath ;
+                switch (weather)
                 {
-                    WeatherIMG.Source = new BitmapImage(new Uri(@"images/Sun2.PNG", UriKind.Relative));
+                    case "Clear":
+                        imagePath = (selected.DateAndTime.Hour >= 20 || selected.DateAndTime.Hour <= 5) ? @"images/Night.PNG" : @"images/Sun2.PNG"; break;
+                    case "Rain" : imagePath = @"images/Pluie.PNG"; break;
+                    case "Clouds" : imagePath = @"images/NuagesSeuls.PNG"; break;
+                    case "Snow" : imagePath = @"images/Neige.PNG"; break;
+                    case "Extreme" : imagePath = @"images/Tonnerre.PNG"; break;
+                    default:imagePath = @"images/Sun2.PNG"; break;
                 }
-                else if (weather == "Rain")
-                    WeatherIMG.Source = new BitmapImage(new Uri(@"images/Pluie.PNG", UriKind.Relative));
+                WeatherIMG.Source = new BitmapImage(new Uri(imagePath,UriKind.Relative));
 
-                else if (weather == "Clouds")
-                    WeatherIMG.Source = new BitmapImage(new Uri(@"images/NuagesSeuls.PNG", UriKind.Relative));
+            }
+        }
+        private async void UpdateWeatherTLV()
+        {
+            using (var webClient = new System.Net.WebClient())
+            {
+                string URL = $"https://api.openweathermap.org/data/2.5/forecast?lat=32.109333&lon=34.855499&cnt=1&appid=88107aa04053a4cf2c34e7962481c7e3&units=metric";
+                var json = await webClient.DownloadStringTaskAsync(URL);
 
-                else if (weather == "Snow")
-                    WeatherIMG.Source = new BitmapImage(new Uri(@"images/Neige.PNG", UriKind.Relative));
+                string degrees = json.Substring(json.IndexOf("temp") + 6, 4);
+                DegreeLabel1.Content = degrees + "°C - ";
 
-                else if (weather == "Extreme")
-                    WeatherIMG.Source = new BitmapImage(new Uri(@"images/Tonnerre.PNG", UriKind.Relative));
+                json = json.Substring(json.IndexOf("weather") + 6);
+                json = json.Substring(json.IndexOf("main") + 7);
+
+                string weather = json.Substring(0, json.IndexOf(",") - 1);
+
+                Weatherlabel1.Content = weather;
+                
+                string imagePath;
+                switch (weather)
+                {
+                    case "Clear":
+                        imagePath = (DateTime.Now.Hour >= 20 || DateTime.Now.Hour <= 5) ? @"images/Night.PNG" : @"images/Sun2.PNG"; break;
+                    case "Rain": imagePath = @"images/Pluie.PNG"; break;
+                    case "Clouds": imagePath = @"images/NuagesSeuls.PNG"; break;
+                    case "Snow": imagePath = @"images/Neige.PNG"; break;
+                    case "Extreme": imagePath = @"images/Tonnerre.PNG"; break;
+                    default: imagePath = @"images/Sun2.PNG"; break;
+                }
+                WeatherIMG1.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
+
             }
         }
         private async void UpdateFlight(FlightInfoPartial selected)

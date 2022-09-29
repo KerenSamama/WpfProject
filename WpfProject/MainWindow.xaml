@@ -102,6 +102,19 @@
 
             </Grid>
         </Border>
+        <Border x:Name="Border_Copy" BorderBrush="#FFF06F6F" BorderThickness="1" Height="123" Visibility="Visible" VerticalAlignment="Top" Grid.Column="1" Margin="25.6,340,46,0" Grid.Row="1">
+
+            <Grid x:Name="WeatherGrid1" Margin="9.2,-0.8,-1.2,31.2" Grid.Column="1" Grid.Row="1" Visibility="Visible" d:LayoutOverrides="VerticalAlignment" >
+
+                <Label x:Name="TemperatureLabel1" Content="Weather Tel-Aviv : " Margin="0,0,62,0" Height="30" VerticalAlignment="Top"/>
+
+                <Label x:Name="DegreeLabel1"  Content="27.3°C" Width="71" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20" Margin="0,30,0,0" Height="35" VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin"/>
+                <Label x:Name="Weatherlabel1" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,-14"  Width="38" d:LayoutOverrides="LeftMargin, RightMargin" Height="32" VerticalAlignment="Bottom"/>
+
+                <Image x:Name="WeatherIMG1" Source="images/Sun2.PNG" Margin="71,30,10,-33.8"  />
+
+            </Grid>
+        </Border>
         <!--event MouseDown="Pin_MouseDown"-->
     </Grid>
 
