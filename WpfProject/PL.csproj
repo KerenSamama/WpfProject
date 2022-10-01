@@ -170,6 +170,19 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Neige.PNG" />
+    <Resource Include="images\Night.PNG" />
+    <Resource Include="images\Pluie.PNG" />
+    <Resource Include="images\SoleilNuages.PNG" />
+    <Resource Include="images\Sun2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\NuagesSeuls.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Tonnerre.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
