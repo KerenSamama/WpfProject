@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using BE;
+using System.Collections.ObjectModel;
 
 namespace BL
 {
@@ -31,7 +32,15 @@ namespace BL
             return dal.GetFlightData(Key);
         }
        
-        
+        public ObservableCollection<FlightInfoPartial>GetFlightBetweenTwoDates(DateTime dateFrom, DateTime dateTo)
+        {
+            List<FlightInfoPartial> ListOfFlightInDB = dal.GetAllFlightsInDB();
+            List<FlightInfoPartial> ListPred = ListOfFlightInDB.FindAll(p => p.DateAndTime.Date <= dateTo.Date && p.DateAndTime.Date >= dateFrom.Date);
+
+            ObservableCollection<FlightInfoPartial> Obs = new ObservableCollection<FlightInfoPartial>(ListPred);
+            return Obs;
+
+        }
 
 
 

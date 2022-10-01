@@ -17,8 +17,7 @@ namespace DAL
         Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights(); // tous les vols 
         Flight GetFlightData(string Key); //Un vol
 
-        //Dictionary<string, List<FlightInfoPartial>> GetTwoDatesFlights(DateTime start, DateTime end);
-
+        
         #endregion
 
         // List<FlightRecap> getAllFlightsSummarize();
