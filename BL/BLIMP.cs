@@ -34,7 +34,7 @@ namespace BL
        
         public ObservableCollection<FlightInfoPartial>GetFlightBetweenTwoDates(DateTime dateFrom, DateTime dateTo)
         {
-            List<FlightInfoPartial> ListOfFlightInDB = dal.GetAllFlightsInDB();
+            List<FlightInfoPartial> ListOfFlightInDB = dal.GetAllFlightInDB();
             List<FlightInfoPartial> ListPred = ListOfFlightInDB.FindAll(p => p.DateAndTime.Date <= dateTo.Date && p.DateAndTime.Date >= dateFrom.Date);
 
             ObservableCollection<FlightInfoPartial> Obs = new ObservableCollection<FlightInfoPartial>(ListPred);

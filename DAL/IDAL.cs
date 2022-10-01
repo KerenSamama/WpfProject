@@ -17,7 +17,7 @@ namespace DAL
         Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights(); // tous les vols 
         Flight GetFlightData(string Key); //Un vol
 
-        
+
         #endregion
 
         // List<FlightRecap> getAllFlightsSummarize();
@@ -28,7 +28,12 @@ namespace DAL
         //Weather getWeather(Location location)();
         //HebEvent getHebevent(Date date)();
 
-        
+        List<FlightInfoPartial> GetAllFlightInDB();
+        void SaveFlightToDB(FlightInfoPartial flight);
+        void DeleteFlight(FlightInfoPartial flight);
+
+
+
     }
 }
 
