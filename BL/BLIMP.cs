@@ -22,6 +22,7 @@ namespace BL
 
         public
            Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights()
+
          {
              return dal.GetCurrentFlights();
          }
@@ -30,6 +31,11 @@ namespace BL
         public Flight GetFlightData(string Key)
         {
             return dal.GetFlightData(Key);
+        }
+
+        public void SaveFlight(FlightInfoPartial flightInfoPartial)
+        {
+            dal.SaveFlightToDB(flightInfoPartial);
         }
        
         public ObservableCollection<FlightInfoPartial>GetFlightBetweenTwoDates(DateTime dateFrom, DateTime dateTo)
