@@ -15,8 +15,6 @@ namespace WpfProject.Radar
         public RadarViewModel()
         {
             radarModel = new RadarModel();
-
-
         }
         public Flight ConvertFlightIPToFlighInfo(FlightInfoPartial flightInfoPartial)
         {

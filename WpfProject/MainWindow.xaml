@@ -11,7 +11,7 @@
         Title="MainWindow" Height="600" Width="1280.334">
     <Grid>
         <UserControl x:Name="MainWindowUC" Margin="0,4,0,0" Grid.Row="1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="385,285,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="START" x:Name="startButton" HorizontalAlignment="Left" Margin="385,285,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>
     

@@ -37,13 +37,10 @@ namespace WpfProject.Radar
             WeatherGrid1.Visibility = Visibility.Hidden;
         }
 
-
         public RadarViewModel radarViewModel = new RadarViewModel();
 
         FlightInfoPartial SelectedFlight = null; //Selected Flight
         TrafficAdapter dal = new TrafficAdapter();
-
-        
 
         private void ReadAllButton_Click(object sender, RoutedEventArgs e)
         {
@@ -65,7 +62,6 @@ namespace WpfProject.Radar
 
         private void FlightsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
             try
             {
                 SelectedFlight = e.AddedItems[0] as BE.FlightInfoPartial; //InFlightsListBox.SelectedItem as FlightInfoPartial;
@@ -75,14 +71,10 @@ namespace WpfProject.Radar
                 UpdateWeather(SelectedFlight);
                 Border_Copy.Visibility = Visibility.Visible;
                 WeatherGrid1.Visibility = Visibility.Visible;
-
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-
-
-
             }
         }
         private async void UpdateWeather(FlightInfoPartial selected)
@@ -108,12 +100,12 @@ namespace WpfProject.Radar
                 switch (weather)
                 {
                     case "Clear":
-                        imagePath = (selected.DateAndTime.Hour >= 20 || selected.DateAndTime.Hour <= 5) ? @"images/Night.PNG" : @"images/Sun2.PNG"; break;
-                    case "Rain": imagePath = @"images/Pluie.PNG"; break;
-                    case "Clouds": imagePath = @"images/NuagesSeuls.PNG"; break;
-                    case "Snow": imagePath = @"images/Neige.PNG"; break;
-                    case "Extreme": imagePath = @"images/Tonnerre.PNG"; break;
-                    default: imagePath = @"images/Sun2.PNG"; break;
+                        imagePath = (selected.DateAndTime.Hour >= 20 || selected.DateAndTime.Hour <= 5) ? @"../images/Night.PNG" : @"../images/Sun2.PNG"; break;
+                    case "Rain": imagePath = @"../images/Pluie.PNG"; break;
+                    case "Clouds": imagePath = @"../images/NuagesSeuls.PNG"; break;
+                    case "Snow": imagePath = @"../images/Neige.PNG"; break;
+                    case "Extreme": imagePath = @"../images/Tonnerre.PNG"; break;
+                    default: imagePath = @"../images/Sun2.PNG"; break;
                 }
                 WeatherIMG.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
 
@@ -140,12 +132,12 @@ namespace WpfProject.Radar
                 switch (weather)
                 {
                     case "Clear":
-                        imagePath = (DateTime.Now.Hour >= 20 || DateTime.Now.Hour <= 5) ? @"images/Night.PNG" : @"images/Sun2.PNG"; break;
-                    case "Rain": imagePath = @"images/Pluie.PNG"; break;
-                    case "Clouds": imagePath = @"images/NuagesSeuls.PNG"; break;
-                    case "Snow": imagePath = @"images/Neige.PNG"; break;
-                    case "Extreme": imagePath = @"images/Tonnerre.PNG"; break;
-                    default: imagePath = @"images/Sun2.PNG"; break;
+                        imagePath = (DateTime.Now.Hour >= 20 || DateTime.Now.Hour <= 5) ? @"../images/Night.PNG" : @"../images/Sun2.PNG"; break;
+                    case "Rain": imagePath = @"../images/Pluie.PNG"; break;
+                    case "Clouds": imagePath = @"../images/NuagesSeuls.PNG"; break;
+                    case "Snow": imagePath = @"../images/Neige.PNG"; break;
+                    case "Extreme": imagePath = @"../images/Tonnerre.PNG"; break;
+                    default: imagePath = @"../images/Sun2.PNG"; break;
                 }
                 WeatherIMG1.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
 
@@ -182,7 +174,7 @@ namespace WpfProject.Radar
                 //MessageBox.Show(Flight.airport.destination.code.iata);
 
                 Pushpin PinCurrent = new Pushpin { ToolTip = selected.FlightCode },
-                        PinOrigin = new Pushpin { ToolTip = Flight.airport.origin.name };
+                        PinOrigin  = new Pushpin { ToolTip = Flight.airport.origin.name };
 
 
                 PositionOrigin origin = new PositionOrigin { X = 0.4, Y = 0.4 };
@@ -224,7 +216,7 @@ namespace WpfProject.Radar
                                  select f).ToList<Trail>();
             addNewPolyLine(OrderedPlaces);
         }
-        private void Pin_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Pin_MouseDown(object sender, MouseButtonEventArgs e) //MouseDown="Pin_MouseDown"
         {
             Pushpin pin = e.OriginalSource as Pushpin;
             if (pin != null)
@@ -247,7 +239,7 @@ namespace WpfProject.Radar
             }
 
             // myMap.Children.Clear(); // clear every line in the map
-            myMap.Children.Remove(myMap.Children[myMap.Children.Count - 1]);
+            myMap.Children.Remove(myMap.Children[myMap.Children.Count - 1]); 
             myMap.Children.Add(polyline); // add the new line
         }
 

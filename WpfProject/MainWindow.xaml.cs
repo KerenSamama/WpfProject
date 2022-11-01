@@ -35,8 +35,11 @@ namespace PL
             {
                 radarView = new RadarView();
             }
-            MainWindowUC.Content = radarView;
+            startButton.Visibility = Visibility.Hidden;
+            startButton.Visibility = Visibility.Hidden;
 
+            MainWindowUC.Content = radarView;
+            
         }
     }
 
