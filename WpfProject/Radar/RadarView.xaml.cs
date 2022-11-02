@@ -26,7 +26,7 @@ namespace WpfProject.Radar
     /// </summary>
     public partial class RadarView : UserControl
     {
-        public BE.Flight Flight = new BE.Flight(); 
+        public BE.Flight Flight = new BE.Flight();
         public RadarView()
         {
             InitializeComponent();
@@ -174,7 +174,7 @@ namespace WpfProject.Radar
                 //MessageBox.Show(Flight.airport.destination.code.iata);
 
                 Pushpin PinCurrent = new Pushpin { ToolTip = selected.FlightCode },
-                        PinOrigin  = new Pushpin { ToolTip = Flight.airport.origin.name };
+                        PinOrigin = new Pushpin { ToolTip = Flight.airport.origin.name };
 
 
                 PositionOrigin origin = new PositionOrigin { X = 0.4, Y = 0.4 };
@@ -239,7 +239,7 @@ namespace WpfProject.Radar
             }
 
             // myMap.Children.Clear(); // clear every line in the map
-            myMap.Children.Remove(myMap.Children[myMap.Children.Count - 1]); 
+            myMap.Children.Remove(myMap.Children[myMap.Children.Count - 1]);
             myMap.Children.Add(polyline); // add the new line
         }
 
@@ -256,11 +256,10 @@ namespace WpfProject.Radar
             UpdateFlight(SelectedFlight);
             Counter.Text = (Convert.ToInt32(Counter.Text) + 1).ToString();
         }
-        
 
 
 
 
-        }
+
     }
-
+}

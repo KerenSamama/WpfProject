@@ -11,7 +11,7 @@
         
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1280.334">
-    
+
     <UserControl.Resources>
         <converters:TickToDateTimeConverter x:Key="TickConvert"/>
         <Style TargetType="m:Pushpin" x:Key="FromIsrael">
@@ -118,6 +118,24 @@
             </Grid>
         </Border>
         <!--event MouseDown="Pin_MouseDown"-->
+        <Grid  x:Name="GridDetails" Grid.Column="2" HorizontalAlignment="Left" Margin="-10,0,0,-67" Grid.Row="1" Width="338">
+            <Image x:Name="trajectoire" Source="/images/trajectoire.PNG.jpeg" HorizontalAlignment="Left" Width="318" Visibility="Visible" Height="86" VerticalAlignment="Bottom" Margin="0,0,0,521"/>
+            <Label x:Name="FromCountry" Content="ORY" HorizontalAlignment="Left" Margin="10,86,0,0" FontWeight="Bold" FontSize="20" RenderTransformOrigin="-0.698,-0.544" Width="55" Height="49" VerticalAlignment="Top"/>
+            <Label x:Name="ToCountry" Content="TLV" HorizontalAlignment="Right" Margin="0,86,0,0" FontWeight="Bold" Width="69" FontSize="20" Height="63" VerticalAlignment="Top"/>
+            <Label Content="a{Binding airport.origin.name}" Margin="0,135,0,0" HorizontalAlignment="Left" Width="155" Height="58" VerticalAlignment="Top"/>
+            <Label Content="a{Binding airport.destination.name}" Margin="0,135,-8,0" HorizontalAlignment="Right" Width="170" d:LayoutOverrides="LeftMargin, RightMargin" Height="58" VerticalAlignment="Top"/>
+
+            <Label Content="a{Binding airport.origin.position.country.name}" HorizontalAlignment="Left" Width="145" Margin="0,193,0,237"/>
+            <Label Content="a{Binding airport.destination.position.country.name}" Margin="0,198,0,237" HorizontalAlignment="Right" Width="162" d:LayoutOverrides="LeftMargin, RightMargin"/>
+
+            <Label Content="a{Binding identification.callsign}" Margin="0,0,10,196" Height="36" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin"/>
+            <Label Content="a{Binding aircraft.registration}" Height="35" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin" Margin="0,0,0,161"/>
+            <Label Content="a{Binding airline.name}" Height="41" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin" Margin="0,0,0,115"/>
+
+            <TextBlock Text="a{Binding status.text}"/>
+            <TextBlock Text="a{Binding time.estimated.arrival, Converter={StaticResource TickConvert}}" Margin="0,10,0,-10" d:LayoutOverrides="LeftMargin, RightMargin"/>
+        </Grid>
     </Grid>
+    
 
 </UserControl>
