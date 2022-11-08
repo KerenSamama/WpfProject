@@ -93,6 +93,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Command\Flights.cs" />
     <Compile Include="HebCal\HebCalModel.cs" />
     <Compile Include="HebCal\HebCalViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -102,6 +103,7 @@
       <DependentUpon>HebCalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="converters\TickToDateTimeConverter.cs" />
+    <Compile Include="ViewModels\ButtonViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

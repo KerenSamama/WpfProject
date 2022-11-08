@@ -240,6 +240,10 @@ namespace PL
             dispatcherTimer.Start();
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+        }
+
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             UpdateFlight(SelectedFlight);
