@@ -47,10 +47,10 @@ namespace WpfProject.Radar
             var FlightKeys = dal.GetCurrentFlights(); // gets the flight according to the key
 
             // this.DataContext = FlightKeys;
-            InFlightsListBox.DataContext = FlightKeys["Incoming"];
-            OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
+            InFlightsComboBox.DataContext = FlightKeys["Incoming"];
+            OutFlightsComboBox.DataContext = FlightKeys["Outgoing"];
 
-            foreach (FlightInfoPartial flight in InFlightsListBox.Items)
+            foreach (FlightInfoPartial flight in InFlightsComboBox.Items)
             {
                 try
                 {
@@ -210,7 +210,7 @@ namespace WpfProject.Radar
         }
         private void FlightMouseEnter(object sender, MouseEventArgs e)
         {
-            var Flight = dal.GetFlightData((InFlightsListBox.SelectedItem as FlightInfoPartial).SourceId);
+            var Flight = dal.GetFlightData((InFlightsComboBox.SelectedItem as FlightInfoPartial).SourceId);
             var OrderedPlaces = (from f in Flight.trail
                                  orderby f.ts
                                  select f).ToList<Trail>();
