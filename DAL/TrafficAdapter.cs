@@ -50,7 +50,7 @@ namespace DAL
 
                         if (FromSource=="" ||  Arrival =="")
                             continue;
-                        if (FromSource == "TLV" || Arrival== "TLV") {
+                        if (FromSource == "TLV" || Arrival== "TLV" ) {
 
                             FlightInfoPartial flightInfo = new FlightInfoPartial {
                                     Id = -1, 
@@ -62,10 +62,10 @@ namespace DAL
                                     DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])),
                                     FlightCode = item.Value[13].ToString() };
 
-                            if (FromSource == "TLV" ) 
+                            if (FromSource == "TLV" && flightInfo!=null) 
                                 Outgoing.Add(flightInfo);
 
-                            else if (Arrival== "TLV")
+                            else if (Arrival== "TLV" && flightInfo != null)
                                Incoming.Add(flightInfo);
                          } 
                     }

@@ -10,120 +10,12 @@
         xmlns:viewModel="clr-namespace:WpfProject.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1280.334">
-
-    <Window.Resources>
-       
+    <Grid>
+        <UserControl x:Name="MainWindowUC" Margin="0,4,0,0" Grid.Row="1"/>
+        <Button Content="START" x:Name="startButton" HorizontalAlignment="Left" Margin="385,285,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         
-        
-        <converters:TickToDateTimeConverter x:Key="TickConvert"/>
-        <Style TargetType="m:Pushpin" x:Key="FromIsrael">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Grid>
-                            <Image Source="images\airplane.png"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="m:Pushpin" x:Key="ToIsrael">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Image Source="images\airplaneToIsrael.png"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <!--we can bind to a method, not this style-->
-        <!--ObjectType="{x:Type helper:HelperClass}"-->
-
-        <ObjectDataProvider MethodName="GetDateTimeFromEpoch" x:Key="EpochConvert">
-            <ObjectDataProvider.MethodParameters>
-                <system:Double>0</system:Double>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        
-    <viewModel:ButtonViewModel x:Key="vm"></viewModel:ButtonViewModel>
-    </Window.Resources>
-    <Grid HorizontalAlignment="Left" Height="600" Margin="0,10,0,-39.333" VerticalAlignment="Top" Width="1282">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="540"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="182"/>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="1258.667"/>
-        </Grid.ColumnDefinitions>
-        <Button Name="ReadAllButton" Content="Read All" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Width="123" Height="40" Click="ReadAllButton_Click" />
-        <ListBox ItemsSource="{Binding}" Name="InFlightsListBox" HorizontalAlignment="Left" Height="100" Margin="31,54,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" SelectionChanged="FlightsListBox_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Source}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Label Content="Incoming" HorizontalAlignment="Left" Margin="31,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="34" Width="77"/>
-        <Label Content="Outgoing" HorizontalAlignment="Left" Margin="34,184,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="26"/>
-        <ListBox ItemsSource="{Binding}" Name="OutFlightsListBox" HorizontalAlignment="Left" Height="100" Margin="34,215,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123"  SelectionChanged="FlightsListBox_SelectionChanged">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Destination}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <Label Content="Flight details" Grid.Column="1" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="127" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Content="Start Track" Grid.Column="2" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="133" Height="40" Click="Button_Click_1"/>
-        <TextBox x:Name="Counter" Grid.Column="2" HorizontalAlignment="Left" Text="1" Height="40" Margin="432,10,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="86"/>
-        <StackPanel x:Name="DetailsPanel" Grid.Column="1" HorizontalAlignment="Left" Height="295" Margin="6,20,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234">
-            <TextBlock Text="{Binding identification.callsign}"/>
-            <TextBlock Text="{Binding aircraft.registration}" Margin="0,0,-0.4,0"/>
-            <TextBlock Text="{Binding airline.name}"/>
-            <TextBlock Text="{Binding airport.destination.name}"/>
-            <TextBlock Text="{Binding airport.destination.position.country.name}"/>
-            <TextBlock Text="{Binding airport.origin.name}"/>
-            <TextBlock Text="{Binding airport.origin.position.country.name}"/>
-            <TextBlock Text="{Binding status.text}"/>
-            <TextBlock Text="{Binding time.estimated.arrival, Converter = {StaticResource TickConvert}}"/>
-        </StackPanel>
-
-
-        <m:Map x:Name="myMap" CredentialsProvider="AqE_0hHQMLVjHSiX3mcf_JQWTuWuoWpyJD7n8PP-e_G3eq7wCEYEl12YHlpMMaCf" Margin="10,10,410.667,43" ZoomLevel="5.0" Center="32.000454,34.870743" AnimationLevel="None" MouseDown="Pin_MouseDown" Grid.Column="2" Grid.Row="1"/>
-        <Border x:Name="Border" BorderBrush="#FFF06F6F" BorderThickness="1" Height="123" Visibility="Visible" VerticalAlignment="Top" Grid.Column="1" Margin="25.6,192,46,0" Grid.Row="1">
-
-            <Grid x:Name="WeatherGrid" Margin="9.2,-0.8,-1.2,31.2" Grid.Column="1" Grid.Row="1" Visibility="Visible" d:LayoutOverrides="VerticalAlignment" >
-
-                <Label Name="TemperatureLabel" Content="Weather : " Width="71" HorizontalAlignment="Left" Margin="0,0,0,-1.6" d:LayoutOverrides="LeftMargin, RightMargin"/>
-
-                <Label Name="DegreeLabel"  Content="27.3°C" Width="71" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20" Margin="0,30,0,0" Height="35" VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin"/>
-                <Label x:Name="Weatherlabel" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,-14"  Width="38" d:LayoutOverrides="LeftMargin, RightMargin" Height="32" VerticalAlignment="Bottom"/>
-
-                <Image x:Name="WeatherIMG" Source="images\Sun2.PNG" Margin="71,10,10,-13.8"  />
-
-            </Grid>
-        </Border>
-        <Border x:Name="Border_Copy" BorderBrush="#FFF06F6F" BorderThickness="1" Height="123" Visibility="Visible" VerticalAlignment="Top" Grid.Column="1" Margin="25.6,340,46,0" Grid.Row="1">
-
-            <Grid x:Name="WeatherGrid1" Margin="9.2,-0.8,-1.2,31.2" Grid.Column="1" Grid.Row="1" Visibility="Visible" d:LayoutOverrides="VerticalAlignment" >
-
-                <Label x:Name="TemperatureLabel1" Content="Weather Tel-Aviv : " Margin="0,0,62,0" Height="30" VerticalAlignment="Top"/>
-
-                <Label x:Name="DegreeLabel1"  Content="27.3°C" Width="71" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20" Margin="0,30,0,0" Height="35" VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin"/>
-                <Label x:Name="Weatherlabel1" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,-14"  Width="38" d:LayoutOverrides="LeftMargin, RightMargin" Height="32" VerticalAlignment="Bottom"/>
-
-                <Image x:Name="WeatherIMG1" Source="images/Sun2.PNG" Margin="71,30,10,-33.8"  />
-
-            </Grid>
-        </Border>
-        <Button Content="Button" Grid.Column="2" HorizontalAlignment="Left" Margin="114,-280,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="hello"  Grid.Column="2" HorizontalAlignment="Left" Margin="159,10,0,0" VerticalAlignment="Top" Width="75" Command="{Binding Source={StaticResource vm}, Path=flight}"/>
-        <!--event MouseDown="Pin_MouseDown"-->
     </Grid>
+    
+
 
 </Window>

@@ -111,6 +111,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Radar\RadarModel.cs" />
+    <Compile Include="Radar\RadarView.xaml.cs">
+      <DependentUpon>RadarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Radar\RadarViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -118,6 +123,10 @@
     <Page Include="HebCal\HebCalView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Radar\RadarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

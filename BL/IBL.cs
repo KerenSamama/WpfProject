@@ -18,6 +18,8 @@ namespace BL
 
         Flight GetFlightData(string Key);
 
+        void SaveFlight(FlightInfoPartial flightInfoPartial);
+
 
         //GetWeatherInfo
         //GetCalendarInfo
