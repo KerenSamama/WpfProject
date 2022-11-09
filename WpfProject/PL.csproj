@@ -94,6 +94,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Command\Flights.cs" />
+    <Compile Include="FirstWindow.xaml.cs">
+      <DependentUpon>FirstWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HebCal\HebCalModel.cs" />
     <Compile Include="HebCal\HebCalViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -104,6 +107,10 @@
     </Compile>
     <Compile Include="converters\TickToDateTimeConverter.cs" />
     <Compile Include="ViewModels\ButtonViewModel.cs" />
+    <Page Include="FirstWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -131,6 +138,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Font\Dosis.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -184,6 +192,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Tonnerre.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icone_Avion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
