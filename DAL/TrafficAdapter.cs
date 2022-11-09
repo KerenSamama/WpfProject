@@ -96,7 +96,7 @@ namespace DAL
                 try
                 {
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    CurrentFlight = serializer.Deserialize<Flight>(json); //erreur qui revien ici
+                    CurrentFlight = serializer.Deserialize<Flight>(json); 
                 }
                 catch (Exception e)
                 {

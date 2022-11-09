@@ -135,7 +135,10 @@
             <TextBlock Text="a{Binding status.text}"/>
             <TextBlock Text="a{Binding time.estimated.arrival, Converter={StaticResource TickConvert}}" Margin="0,10,0,-10" d:LayoutOverrides="LeftMargin, RightMargin"/>
         </Grid>
+        <ComboBox Loaded="ComboBox_Loaded_Outgoing"  Grid.Column="2" HorizontalAlignment="Left" Margin="691,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Destination}" />
+        <ComboBox Loaded="ComboBox_Loaded_Incomimg" Grid.Column="2" HorizontalAlignment="Left" Margin="523,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Source}"/>
+
     </Grid>
-    
+
 
 </UserControl>

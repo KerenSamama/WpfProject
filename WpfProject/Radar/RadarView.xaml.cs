@@ -257,9 +257,37 @@ namespace WpfProject.Radar
             Counter.Text = (Convert.ToInt32(Counter.Text) + 1).ToString();
         }
 
+        private void ComboBox_Loaded_Outgoing(object sender, RoutedEventArgs e)
+        {
+            var FlightKeys = dal.GetCurrentFlights();
+            List<string> data = new List<string>();
+            foreach (var flight in FlightKeys["Outgoing"])
+            {
+                data.Add(flight.Destination);
+            }
+            var combo = sender as ComboBox;
+            combo.ItemsSource = data;
+            combo.SelectedIndex = 0;
+        }
 
+        private void ComboBox_Loaded_Incomimg(object sender, RoutedEventArgs e)
+        {
+            var FlightKeys = dal.GetCurrentFlights();
+            List<string> data = new List<string>();
+            foreach (var flight in FlightKeys["Incoming"])
+            {
+                data.Add(flight.Source);
+            }
+            var combo = sender as ComboBox;
+            combo.ItemsSource = data;
+            combo.SelectedIndex = 0;
 
-
-
+        }
+        //private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        // var selectedcomboitem = sender as ComboBox;
+        //    string name = selectedcomboitem.SelectedItem as string;
+        //    MessageBox.Show(name);
+        //}
     }
 }
