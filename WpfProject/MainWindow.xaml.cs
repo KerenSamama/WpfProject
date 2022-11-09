@@ -53,6 +53,10 @@ namespace PL
             startButton.Visibility = Visibility.Hidden;
             ViewCalendar.Visibility = Visibility.Hidden;
             stp.Visibility = Visibility.Hidden;
+            deco.Visibility = Visibility.Hidden;
+            welcome.Visibility = Visibility.Hidden;
+            to.Visibility = Visibility.Hidden;
+            airplane.Visibility = Visibility.Hidden;
             //mainGrid.Visibility = Visibility.Hidden;
             MainWindowUC.Content = radarView;
 

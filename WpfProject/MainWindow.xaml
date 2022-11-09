@@ -85,20 +85,23 @@
                            FontFamily="Font/#Dosis"
                                Margin="10,0,0,0"/>
                 </StackPanel>
-                <TextBlock Text="Welcome "
+                <TextBlock Name="welcome"
+                    Text="Welcome "
                            Foreground="White"
                            FontSize="25"
                            FontWeight="Medium"
                            FontFamily="font/#Dosis"
                            />
-                <TextBlock Text="To "
+                <TextBlock Name="to"
+                    Text="To "
                            Foreground="White"
                            FontSize="25"
                            FontWeight="Medium"
                            FontFamily="font/#Dosis"
                            />
 
-                <TextBlock Text="AirplaneTrack"
+                <TextBlock Name="airplane"
+                    Text="AirplaneTrack"
                            Foreground="White"
                            FontSize="25"
                            FontWeight="Medium"
@@ -188,7 +191,7 @@
 
             <StackPanel Orientation="Horizontal"
                         Margin="-350,250,-255,-250">
-                <StackPanel>
+                <StackPanel Name="deco">
                     <Border Width="700"
                             Height="35"
                             Background="#3DDDC2"
