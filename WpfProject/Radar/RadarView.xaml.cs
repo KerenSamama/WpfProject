@@ -145,6 +145,7 @@ namespace WpfProject.Radar
         }
         private async void UpdateFlight(FlightInfoPartial selected)
         {
+            
             var Flight = dal.GetFlightData(selected.SourceId);
 
             DetailsPanel.DataContext = Flight;

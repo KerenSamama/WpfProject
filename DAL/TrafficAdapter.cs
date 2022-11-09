@@ -42,31 +42,34 @@ namespace DAL
                     foreach (var item in AllFlightData) // for each item in the data, for each flight
                     {
                         var key = item.Key;
-                        if (key == "full_count" || key == "version" ) continue;
-                       
-                        // 11 is the source in the array, we create an object with every 
-                        FromSource = item.Value[From].ToString();
-                        Arrival = item.Value[To].ToString();
+                        if (key == "full_count" || key == "version" ) { 
+                            // 11 is the source in the array, we create an object with every 
+                            FromSource = item.Value[From].ToString();
+                            Arrival = item.Value[To].ToString();
 
-                        if (FromSource=="" ||  Arrival =="")
-                            continue;
-                        if (FromSource == "TLV" || Arrival== "TLV" ) {
+                            if (FromSource=="" ||  Arrival =="" )
+                                continue;
+                            if (FromSource == "TLV" || Arrival == "TLV")
+                            {
 
-                            FlightInfoPartial flightInfo = new FlightInfoPartial {
-                                    Id = -1, 
+                                FlightInfoPartial flightInfo = new FlightInfoPartial
+                                {
+                                    Id = -1,
                                     Source = FromSource,
                                     Destination = Arrival,
                                     SourceId = key,
                                     Long = Convert.ToDouble(item.Value[1]),
-                                    Lat  = Convert.ToDouble(item.Value[2]), 
+                                    Lat = Convert.ToDouble(item.Value[2]),
                                     DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])),
-                                    FlightCode = item.Value[13].ToString() };
+                                    FlightCode = item.Value[13].ToString()
+                                };
 
-                            if (FromSource == "TLV" && flightInfo!=null) 
-                                Outgoing.Add(flightInfo);
+                                if (FromSource == "TLV" && flightInfo.Id != null)
+                                    Outgoing.Add(flightInfo);
 
-                            else if (Arrival== "TLV" && flightInfo != null)
-                               Incoming.Add(flightInfo);
+                                else if (Arrival == "TLV" && flightInfo.Id != null)
+                                    Incoming.Add(flightInfo);
+                            }
                          } 
                     }
                 }

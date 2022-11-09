@@ -12,7 +12,7 @@
         Title="MainWindow" Height="500" Width="900" WindowStyle="None" ResizeMode="NoResize"
         Background="#181735">
 
-    <Grid>
+    <Grid Name="mainGrid">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -68,12 +68,12 @@
                        HorizontalAlignment="Center"
                        FontFamily="Font/#Dosis" />
         </Grid>
-        <!--<UserControl x:Name="MainWindowUC" Margin="0,4,0,0" Grid.Row="1"/>-->
+        <UserControl x:Name="MainWindowUC" Margin="0,4,0,0" Grid.Row="1"/>
         <StackPanel Grid.Row="1"
                     VerticalAlignment="Center"
                     Margin="60">
             <StackPanel>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Name="stp">
                     <Image Width="60" Height="60"
                        Source="images/Icone_Avion.png"
                            RenderOptions.BitmapScalingMode="Fant"/>
@@ -142,6 +142,7 @@
                 </Button>
 
                 <Button Content="View Calendar"
+                        Name="ViewCalendar"
                         Foreground="White"
                         FontSize="15"
                         FontWeight="Medium">

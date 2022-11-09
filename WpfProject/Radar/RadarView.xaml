@@ -7,10 +7,9 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"  
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:converters="clr-namespace:PL"
-        Background="#181735"
-        
-             mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="1280.334">
+        mc:Ignorable="d" 
+        d:DesignHeight="600" d:DesignWidth="1280.334"
+            Background="#181735">
 
     <UserControl.Resources>
         <converters:TickToDateTimeConverter x:Key="TickConvert"/>

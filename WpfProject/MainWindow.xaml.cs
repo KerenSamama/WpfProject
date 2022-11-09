@@ -49,9 +49,11 @@ namespace PL
             {
                 radarView = new RadarView();
             }
-            startButton.Visibility = Visibility.Hidden;
-            startButton.Visibility = Visibility.Hidden;
-
+            //startButton.Visibility = Visibility.Hidden;
+            //startButton.Visibility = Visibility.Hidden;
+            //ViewCalendar.Visibility = Visibility.Hidden;
+            //stp.Visibility = Visibility.Hidden;
+            mainGrid.Visibility = Visibility.Hidden;
             MainWindowUC.Content = radarView;
 
         }
