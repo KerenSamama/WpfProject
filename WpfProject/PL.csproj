@@ -93,6 +93,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Command\Flights.cs" />
+    <Compile Include="FirstWindow.xaml.cs">
+      <DependentUpon>FirstWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HebCal\HebCalModel.cs" />
     <Compile Include="HebCal\HebCalViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -102,6 +106,11 @@
       <DependentUpon>HebCalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="converters\TickToDateTimeConverter.cs" />
+    <Compile Include="ViewModels\ButtonViewModel.cs" />
+    <Page Include="FirstWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Compile Include="Radar\RadarModel.cs" />
     <Compile Include="Radar\RadarView.xaml.cs">
       <DependentUpon>RadarView.xaml</DependentUpon>
@@ -138,6 +147,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Font\Dosis.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -193,7 +203,7 @@
     <Resource Include="images\Tonnerre.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\trajectoire.PNG.jpeg" />
+    <Resource Include="images\icone_Avion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -7,6 +7,7 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"  
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:converters="clr-namespace:PL"
+        xmlns:viewModel="clr-namespace:WpfProject.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1280.334">
     <Grid>
