@@ -21,7 +21,7 @@ namespace BL
         #region Flights
 
         public
-           Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights()
+        Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights()
 
          {
              return dal.GetCurrentFlights();

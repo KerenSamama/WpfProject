@@ -47,10 +47,10 @@ namespace WpfProject.Radar
             var FlightKeys = dal.GetCurrentFlights(); // gets the flight according to the key
 
             // this.DataContext = FlightKeys;
-            InFlightsComboBox.DataContext = FlightKeys["Incoming"];
-            OutFlightsComboBox.DataContext = FlightKeys["Outgoing"];
+            InFlightsListBox.DataContext = FlightKeys["Incoming"];
+            OutFlightsListBox.DataContext = FlightKeys["Outgoing"];
 
-            foreach (FlightInfoPartial flight in InFlightsComboBox.Items)
+            foreach (FlightInfoPartial flight in InFlightsListBox.Items)
             {
                 try
                 {
@@ -145,20 +145,23 @@ namespace WpfProject.Radar
         }
         private async void UpdateFlight(FlightInfoPartial selected)
         {
-            
-            var Flight = dal.GetFlightData(selected.SourceId);
+           try { 
+                var Flight = dal.GetFlightData(selected.SourceId);
 
-            DetailsPanel.DataContext = Flight;
+                DetailsPanel.DataContext = Flight;
 
-            // Update map
-            if (Flight != null)
-            {
-                List<Trail> OrderedPlaces = (from f in Flight.trail
-                                             orderby f.ts
-                                             select f).ToList<Trail>();
-                // UpdateMap(selected);
-                addNewPolyLine(OrderedPlaces);
+                    // Update map
+                    if (Flight != null)
+                    {
+                        List<Trail> OrderedPlaces = (from f in Flight.trail
+                                                     orderby f.ts
+                                                     select f).ToList<Trail>();
+                        // UpdateMap(selected);
+                        addNewPolyLine(OrderedPlaces);
+                     }
+
             }
+            catch (Exception e) { Debug.WriteLine(e.Message); }
         }
 
         private void UpdateMap(FlightInfoPartial selected)
@@ -211,7 +214,7 @@ namespace WpfProject.Radar
         }
         private void FlightMouseEnter(object sender, MouseEventArgs e)
         {
-            var Flight = dal.GetFlightData((InFlightsComboBox.SelectedItem as FlightInfoPartial).SourceId);
+            var Flight = dal.GetFlightData((InFlightsListBox.SelectedItem as FlightInfoPartial).SourceId);
             var OrderedPlaces = (from f in Flight.trail
                                  orderby f.ts
                                  select f).ToList<Trail>();
@@ -258,32 +261,32 @@ namespace WpfProject.Radar
             Counter.Text = (Convert.ToInt32(Counter.Text) + 1).ToString();
         }
 
-        private void ComboBox_Loaded_Outgoing(object sender, RoutedEventArgs e)
-        {
-            var FlightKeys = dal.GetCurrentFlights();
-            List<string> data = new List<string>();
-            foreach (var flight in FlightKeys["Outgoing"])
-            {
-                data.Add(flight.Destination);
-            }
-            var combo = sender as ComboBox;
-            combo.ItemsSource = data;
-            combo.SelectedIndex = 0;
-        }
+        //private void ComboBox_Loaded_Outgoing(object sender, RoutedEventArgs e)
+        //{
+        //    var FlightKeys = dal.GetCurrentFlights();
+        //    List<string> data = new List<string>();
+        //    foreach (var flight in FlightKeys["Outgoing"])
+        //    {
+        //        data.Add(flight.Destination);
+        //    }
+        //    var combo = sender as ComboBox;
+        //    combo.ItemsSource = data;
+        //    combo.SelectedIndex = 0;
+        //}
 
-        private void ComboBox_Loaded_Incomimg(object sender, RoutedEventArgs e)
-        {
-            var FlightKeys = dal.GetCurrentFlights();
-            List<string> data = new List<string>();
-            foreach (var flight in FlightKeys["Incoming"])
-            {
-                data.Add(flight.Source);
-            }
-            var combo = sender as ComboBox;
-            combo.ItemsSource = data;
-            combo.SelectedIndex = 0;
+        //private void ComboBox_Loaded_Incomimg(object sender, RoutedEventArgs e)
+        //{
+        //    var FlightKeys = dal.GetCurrentFlights();
+        //    List<string> data = new List<string>();
+        //    foreach (var flight in FlightKeys["Incoming"])
+        //    {
+        //        data.Add(flight.Source);
+        //    }
+        //    var combo = sender as ComboBox;
+        //    combo.ItemsSource = data;
+        //    combo.SelectedIndex = 0;
 
-        }
+        //}
         //private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{
         // var selectedcomboitem = sender as ComboBox;

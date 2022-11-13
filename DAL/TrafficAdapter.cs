@@ -13,6 +13,7 @@ namespace DAL
 {
     public class TrafficAdapter
     {
+        public IDAL dal { get; set; }
         // link of a list with all the flights, untight, we dont know where is the info
         private const string AllURL = @" https://data-cloud.flightradar24.com/zones/fcgi/feed.js?faa=1&bounds=38.805%2C24.785%2C29.014%2C40.505&satellite=1&mlat=1&flarm=1&adsb=1&gnd=1&air=1&vehicles=1&estimated=1&maxage=14400&gliders=1&stats=1";
         // link that gives to us the details of the flights which is after the =, tight serialization
@@ -25,7 +26,8 @@ namespace DAL
             Dictionary<string, List<FlightInfoPartial>> Result = new Dictionary<string, List<FlightInfoPartial>>();//belongs to BL
             JObject AllFlightData = null;
            
-            List<FlightInfoPartial> Incoming = new List<FlightInfoPartial>(), Outgoing = new List<FlightInfoPartial>();
+            List<FlightInfoPartial> Incoming = new List<FlightInfoPartial>(),
+            Outgoing = new List<FlightInfoPartial>();
 
             using (var webClient = new System.Net.WebClient()) // able to do a http request
             {
@@ -42,41 +44,43 @@ namespace DAL
                     foreach (var item in AllFlightData) // for each item in the data, for each flight
                     {
                         var key = item.Key;
-                        if (key == "full_count" || key == "version" )
-                        { 
-                            // 11 is the source in the array, we create an object with every 
-                            FromSource = item.Value[From].ToString();
-                            Arrival = item.Value[To].ToString();
+                        if (key == "full_count" || key == "version")
+                            continue;
+                        
+                        // 11 is the source in the array, we create an object with every 
+                        FromSource = item.Value[From].ToString();
+                        Arrival = item.Value[To].ToString();
 
-                            if (FromSource=="" ||  Arrival =="" )
-                                continue;
-                            if (FromSource == "TLV" || Arrival == "TLV")
+                        if (FromSource=="" ||  Arrival =="" )
+                            continue;
+                        if (FromSource == "TLV" || Arrival == "TLV")
+                        {
+
+                            FlightInfoPartial flightInfo = new FlightInfoPartial
                             {
+                                Id = -1,
+                                Source = FromSource,
+                                Destination = Arrival,
+                                SourceId = key,
+                                Long = Convert.ToDouble(item.Value[1]),
+                                Lat = Convert.ToDouble(item.Value[2]),
+                                DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])),
+                                FlightCode = item.Value[13].ToString()
+                            };
+                            Flight flight = dal.GetFlightData(flightInfo.SourceId);
 
-                                FlightInfoPartial flightInfo = new FlightInfoPartial
-                                {
-                                    Id = -1,
-                                    Source = FromSource,
-                                    Destination = Arrival,
-                                    SourceId = key,
-                                    Long = Convert.ToDouble(item.Value[1]),
-                                    Lat = Convert.ToDouble(item.Value[2]),
-                                    DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])),
-                                    FlightCode = item.Value[13].ToString()
-                                };
+                            if (FromSource == "TLV" && flight != null)
+                                Outgoing.Add(flightInfo);
 
-                                if (FromSource == "TLV" && flightInfo.Id != null)
-                                    Outgoing.Add(flightInfo);
-
-                                else if (Arrival == "TLV" && flightInfo.Id != null)
-                                    Incoming.Add(flightInfo);
-                            }
-                         } 
-                    }
+                            else if (Arrival == "TLV" && flight != null)
+                                Incoming.Add(flightInfo);
+                        }
+                        } 
+                    
                 }
                 catch (Exception e)
                 {
-                    Debug.Print(e.Message);
+                    //Debug.Print(e.Message);
                 }
             }
             //Add the flights
@@ -110,5 +114,7 @@ namespace DAL
             }
             return CurrentFlight;
         }
+
+
     }
 }

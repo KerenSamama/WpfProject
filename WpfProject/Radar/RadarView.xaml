@@ -54,7 +54,7 @@
             <ColumnDefinition Width="1258.667"/>
         </Grid.ColumnDefinitions>
         <Button Name="ReadAllButton" Content="Read All" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Width="123" Height="40" Click="ReadAllButton_Click" />
-        <!--<ListBox ItemsSource="{Binding}" Name="InFlightsListBox" HorizontalAlignment="Left" Height="100" Margin="31,54,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" SelectionChanged="FlightsListBox_SelectionChanged">
+        <ListBox ItemsSource="{Binding}" Name="InFlightsListBox" HorizontalAlignment="Left" Height="100" Margin="31,54,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" SelectionChanged="FlightsListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -73,7 +73,7 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>-->
+        </ListBox>
         <Label Content="Flight details" Grid.Column="1" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="127" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Button Content="Start Track" Grid.Column="2" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="133" Height="40" Click="Button_Click_1"/>
         <TextBox x:Name="Counter" Grid.Column="2" HorizontalAlignment="Left" Text="1" Height="40" Margin="432,10,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="86"/>
@@ -155,8 +155,8 @@
         </Grid>
         <!--</Border>-->
 
-        <ComboBox Text="Outgoing flights" Name="InFlightsComboBox" Loaded="ComboBox_Loaded_Outgoing"  Grid.Column="2" HorizontalAlignment="Left" Margin="691,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Destination}" SelectionChanged="FlightsListBox_SelectionChanged" />
-        <ComboBox  Text="Incoming flights" Name="OutFlightsComboBox" Loaded="ComboBox_Loaded_Incomimg" Grid.Column="2" HorizontalAlignment="Left" Margin="523,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Source}" SelectionChanged="FlightsListBox_SelectionChanged"/>
+        <!--<ComboBox Text="Outgoing flights" Name="InFlightsComboBox" Loaded="ComboBox_Loaded_Outgoing"  Grid.Column="2" HorizontalAlignment="Left" Margin="691,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Destination}" SelectionChanged="FlightsListBox_SelectionChanged" />
+        <ComboBox  Text="Incoming flights" Name="OutFlightsComboBox" Loaded="ComboBox_Loaded_Incomimg" Grid.Column="2" HorizontalAlignment="Left" Margin="523,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Source}" SelectionChanged="FlightsListBox_SelectionChanged"/>-->
 
     </Grid>
 
