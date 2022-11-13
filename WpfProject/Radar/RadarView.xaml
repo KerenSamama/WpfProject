@@ -9,7 +9,8 @@
         xmlns:converters="clr-namespace:PL"
         mc:Ignorable="d" 
         d:DesignHeight="600" d:DesignWidth="1280.334"
-            Background="#181735">
+            Background="#181735"
+             >
 
     <UserControl.Resources>
         <converters:TickToDateTimeConverter x:Key="TickConvert"/>
@@ -89,7 +90,7 @@
         </StackPanel>
 
         <!--<Border CornerRadius="75" BorderThickness="20">-->
-        <m:Map x:Name="myMap"  CredentialsProvider="AqE_0hHQMLVjHSiX3mcf_JQWTuWuoWpyJD7n8PP-e_G3eq7wCEYEl12YHlpMMaCf" Margin="10,10,410.667,43" ZoomLevel="5.0" Center="32.000454,34.870743" AnimationLevel="None"  Grid.Column="2" Grid.Row="1"
+        <m:Map x:Name="myMap" Opacity="1" CredentialsProvider="AqE_0hHQMLVjHSiX3mcf_JQWTuWuoWpyJD7n8PP-e_G3eq7wCEYEl12YHlpMMaCf" Margin="10,10,410.667,43" ZoomLevel="5.0" Center="32.000454,34.870743" AnimationLevel="None"  Grid.Column="2" Grid.Row="1"
                />
             <!--</Border>-->
             <Border  x:Name="Border" BorderBrush="#FFF06F6F" BorderThickness="1" Height="123" Visibility="Visible" VerticalAlignment="Top" Grid.Column="1" Margin="25.6,192,46,0" Grid.Row="1">
@@ -123,21 +124,21 @@
             <Image x:Name="trajectoire" Source="/images/trajectoire.PNG.jpeg" HorizontalAlignment="Left" Width="318" Visibility="Visible" Height="86" VerticalAlignment="Bottom" Margin="0,0,0,521"/>
             <Label x:Name="FromCountry" Content="ORY" HorizontalAlignment="Left" Margin="10,86,0,0" FontWeight="Bold" FontSize="20" RenderTransformOrigin="-0.698,-0.544" Width="55" Height="49" VerticalAlignment="Top"/>
             <Label x:Name="ToCountry" Content="TLV" HorizontalAlignment="Right" Margin="0,86,0,0" FontWeight="Bold" Width="69" FontSize="20" Height="63" VerticalAlignment="Top"/>
-            <Label Content="a{Binding airport.origin.name}" Margin="0,135,0,0" HorizontalAlignment="Left" Width="155" Height="58" VerticalAlignment="Top"/>
-            <Label Content="a{Binding airport.destination.name}" Margin="0,135,-8,0" HorizontalAlignment="Right" Width="170" d:LayoutOverrides="LeftMargin, RightMargin" Height="58" VerticalAlignment="Top"/>
+            <Label Content="a{Binding airport.origin.name}"  Foreground="AliceBlue" Margin="0,135,0,0" HorizontalAlignment="Left" Width="155" Height="58" VerticalAlignment="Top"/>
+            <Label Content="a{Binding airport.destination.name}" Foreground="AliceBlue" Margin="0,135,-8,0" HorizontalAlignment="Right" Width="170" d:LayoutOverrides="LeftMargin, RightMargin" Height="58" VerticalAlignment="Top"/>
 
-            <Label Content="a{Binding airport.origin.position.country.name}" HorizontalAlignment="Left" Width="145" Margin="0,193,0,237"/>
-            <Label Content="a{Binding airport.destination.position.country.name}" Margin="0,198,0,237" HorizontalAlignment="Right" Width="162" d:LayoutOverrides="LeftMargin, RightMargin"/>
+            <Label Content="a{Binding airport.origin.position.country.name}"  Foreground="AliceBlue" HorizontalAlignment="Left" Width="145" Margin="0,193,0,237"/>
+            <Label Content="a{Binding airport.destination.position.country.name}"  Foreground="AliceBlue" Margin="0,198,0,237" HorizontalAlignment="Right" Width="162" d:LayoutOverrides="LeftMargin, RightMargin"/>
 
-            <Label Content="a{Binding identification.callsign}" Margin="0,0,10,196" Height="36" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin"/>
-            <Label Content="a{Binding aircraft.registration}" Height="35" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin" Margin="0,0,0,161"/>
-            <Label Content="a{Binding airline.name}" Height="41" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin" Margin="0,0,0,115"/>
+            <Label Content="a{Binding identification.callsign}" Foreground="AliceBlue" Margin="0,0,10,196" Height="36" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin"/>
+            <Label Content="a{Binding aircraft.registration}"  Foreground="AliceBlue" Height="35" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin" Margin="0,0,0,161"/>
+            <Label Content="a{Binding airline.name}"  Foreground="AliceBlue" Height="41" VerticalAlignment="Bottom" d:LayoutOverrides="LeftMargin, RightMargin" Margin="0,0,0,115"/>
 
             <TextBlock Text="a{Binding status.text}"/>
             <TextBlock Text="a{Binding time.estimated.arrival, Converter={StaticResource TickConvert}}" Margin="0,10,0,-10" d:LayoutOverrides="LeftMargin, RightMargin"/>
         </Grid>
         <ComboBox Text="Outgoing flights" Name="InFlightsComboBox" Loaded="ComboBox_Loaded_Outgoing"  Grid.Column="2" HorizontalAlignment="Left" Margin="691,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Destination}" SelectionChanged="FlightsListBox_SelectionChanged" />
-        <ComboBox Text="Incoming flights" Name="OutFlightsComboBox" Loaded="ComboBox_Loaded_Incomimg" Grid.Column="2" HorizontalAlignment="Left" Margin="523,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Source}" SelectionChanged="FlightsListBox_SelectionChanged"/>
+        <ComboBox  Text="Incoming flights" Name="OutFlightsComboBox" Loaded="ComboBox_Loaded_Incomimg" Grid.Column="2" HorizontalAlignment="Left" Margin="523,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Source}" SelectionChanged="FlightsListBox_SelectionChanged"/>
 
     </Grid>
 

@@ -45,7 +45,7 @@ namespace PL
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            if (!(MainWindowUC.Content is RadarView))
+            if (!(MainWindowUC.Content is RadarView) )
             {
                 radarView = new RadarView();
             }
@@ -57,7 +57,6 @@ namespace PL
             welcome.Visibility = Visibility.Hidden;
             to.Visibility = Visibility.Hidden;
             airplane.Visibility = Visibility.Hidden;
-            //mainGrid.Visibility = Visibility.Hidden;
             MainWindowUC.Content = radarView;
 
         }

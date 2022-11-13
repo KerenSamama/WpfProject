@@ -9,8 +9,9 @@
         xmlns:converters="clr-namespace:PL"
         xmlns:viewModel="clr-namespace:WpfProject.ViewModels"
         mc:Ignorable="d" 
-        Title="MainWindow" Height="500" Width="900" WindowStyle="None" ResizeMode="NoResize"
-        Background="#181735">
+        Title="MainWindow" Height="600" Width="1280.334" WindowStyle="None" ResizeMode="NoResize"
+        Background="#181735"
+    >
 
     <Grid Name="mainGrid">
 
@@ -21,14 +22,14 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid Background="#0F0F2D"
               Grid.ColumnSpan="2"
               MouseDown="Grid_MouseDown">
 
-            <Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions >
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -68,7 +69,8 @@
                        HorizontalAlignment="Center"
                        FontFamily="Font/#Dosis" />
         </Grid>
-        <UserControl x:Name="MainWindowUC" Margin="0,4,0,0" Grid.Row="1"/>
+        <UserControl x:Name="MainWindowUC" Margin="0,4,-1000,0" Grid.Row="1"/>
+
         <StackPanel Grid.Row="1"
                     VerticalAlignment="Center"
                     Margin="60">
@@ -180,7 +182,7 @@
 
 
         </StackPanel>
-        <Grid Grid.Column="1"
+        <Grid Name="gridright" Grid.Column="1"
               Grid.RowSpan="2" 
               Margin="160, -365,-610,85"
               Panel.ZIndex="-1">

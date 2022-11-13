@@ -32,7 +32,7 @@ namespace DAL
                 var json = webClient.DownloadString(AllURL);
 
                 HelperClass Helper = new HelperClass();
-                AllFlightData = JObject.Parse(json); // convert the jason to data
+                AllFlightData = JObject.Parse(json); // convert the json to data
 
                 try
                 {
@@ -42,7 +42,9 @@ namespace DAL
                     foreach (var item in AllFlightData) // for each item in the data, for each flight
                     {
                         var key = item.Key;
-                        if (key == "full_count" || key == "version" ) { 
+                        if (key == "full_count" || key == "version")
+                            continue;
+                        
                             // 11 is the source in the array, we create an object with every 
                             FromSource = item.Value[From].ToString();
                             Arrival = item.Value[To].ToString();
@@ -52,26 +54,26 @@ namespace DAL
                             if (FromSource == "TLV" || Arrival == "TLV")
                             {
 
-                                FlightInfoPartial flightInfo = new FlightInfoPartial
-                                {
-                                    Id = -1,
-                                    Source = FromSource,
-                                    Destination = Arrival,
-                                    SourceId = key,
-                                    Long = Convert.ToDouble(item.Value[1]),
-                                    Lat = Convert.ToDouble(item.Value[2]),
-                                    DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])),
-                                    FlightCode = item.Value[13].ToString()
-                                };
+                            FlightInfoPartial flightInfo = new FlightInfoPartial
+                            {
+                                Id = -1,
+                                Source = FromSource,
+                                Destination = Arrival,
+                                SourceId = key,
+                                Long = Convert.ToDouble(item.Value[1]),
+                                Lat = Convert.ToDouble(item.Value[2]),
+                                DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])),
+                                FlightCode = item.Value[13].ToString()
+                            };
 
-                                if (FromSource == "TLV" && flightInfo.Id != null)
-                                    Outgoing.Add(flightInfo);
+                            if (FromSource == "TLV")
+                                Outgoing.Add(flightInfo);
 
-                                else if (Arrival == "TLV" && flightInfo.Id != null)
-                                    Incoming.Add(flightInfo);
+                            else if (Arrival == "TLV")
+                                Incoming.Add(flightInfo);
                             }
                          } 
-                    }
+                    
                 }
                 catch (Exception e)
                 {
