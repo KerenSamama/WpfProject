@@ -50,7 +50,6 @@ namespace PL
                 radarView = new RadarView();
             }
             startButton.Visibility = Visibility.Hidden;
-            startButton.Visibility = Visibility.Hidden;
             ViewCalendar.Visibility = Visibility.Hidden;
             stp.Visibility = Visibility.Hidden;
             deco.Visibility = Visibility.Hidden;
