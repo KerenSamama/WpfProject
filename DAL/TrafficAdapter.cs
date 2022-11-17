@@ -67,7 +67,7 @@ namespace DAL
                                 DateAndTime = Helper.GetDateTimeFromEpoch(Convert.ToDouble(item.Value[10])),
                                 FlightCode = item.Value[13].ToString()
                             };
-                            Flight flight = dal.GetFlightData(flightInfo.SourceId);
+                            Flight flight = GetFlightData(flightInfo.SourceId);
 
                             if (FromSource == "TLV" && flight != null)
                                 Outgoing.Add(flightInfo);
