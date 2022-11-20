@@ -37,6 +37,7 @@ namespace WpfProject.Radar
             Border_Copy.Visibility = Visibility.Hidden;
             WeatherGrid1.Visibility = Visibility.Hidden;
             flightdetails.Visibility = Visibility.Hidden;
+            blueborder.Visibility = Visibility.Hidden;
             //trajectoire.Visibility = Visibility.Hidden;
         }
 
@@ -76,6 +77,7 @@ namespace WpfProject.Radar
                 WeatherGrid1.Visibility = Visibility.Visible;
                 flightdetails.Visibility = Visibility.Visible;
                 trajectoire.Visibility = Visibility.Visible;
+                blueborder.Visibility = Visibility.Visible;
             }
             catch (Exception ex)
             {
@@ -101,6 +103,7 @@ namespace WpfProject.Radar
                 Border.Visibility = Visibility.Visible;
                 WeatherGrid.Visibility = Visibility.Visible;
                 trajectoire.Visibility = Visibility.Visible;
+                blueborder.Visibility = Visibility.Visible;
 
                 string imagePath;
                 switch (weather)
@@ -269,8 +272,9 @@ namespace WpfProject.Radar
        
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            //Frame frame = (Application.Current.Radar as MainWindow).PageFrame;
-            //frame.Navigate(new Uri("LoginPage.xaml", UriKind.RelativeOrAbsolute));
+            Uri uri = new Uri("MainWindow.xaml", UriKind.Relative);
+            NavigationService ns = NavigationService.GetNavigationService(this);
+            ns.Navigate(uri);
         }
 
 

@@ -173,7 +173,7 @@
 
             <TextBlock Text="{Binding status.text}" Foreground="AliceBlue" Grid.RowSpan="2"/>
             <TextBlock Text="{Binding time.estimated.arrival, Converter={StaticResource TickConvert}}" Margin="0,10,0,-10" Grid.RowSpan="2"/>
-            <Border  BorderThickness="5" BorderBrush="AliceBlue" CornerRadius="25" HorizontalAlignment="Left" Height="492" VerticalAlignment="Top" Width="380" Grid.RowSpan="2" Margin="-52,0,0,0"/>
+            <Border Name="blueborder" BorderThickness="5" BorderBrush="AliceBlue" CornerRadius="25" HorizontalAlignment="Left" Height="492" VerticalAlignment="Top" Width="380" Grid.RowSpan="2" Margin="-52,0,0,0"/>
 
         </Grid>
         <Button Background="#383660" FontFamily="Times New Roman" Foreground="White" Style="{DynamicResource RoundButton}" Grid.Column="2" Content="Home" HorizontalAlignment="Left" Margin="745,0,0,0" VerticalAlignment="Top" Height="30" RenderTransformOrigin="0.543,-0.441" Width="78" Click="Home_Click"/>

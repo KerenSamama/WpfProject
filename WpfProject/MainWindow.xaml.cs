@@ -57,6 +57,7 @@ namespace PL
             to.Visibility = Visibility.Hidden;
             airplane.Visibility = Visibility.Hidden;
             MainWindowUC.Content = radarView;
+            
 
         }
     }
