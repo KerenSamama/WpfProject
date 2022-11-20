@@ -35,6 +35,8 @@ namespace WpfProject.Radar
             UpdateWeatherTLV();
             Border_Copy.Visibility = Visibility.Hidden;
             WeatherGrid1.Visibility = Visibility.Hidden;
+            flightdetails.Visibility = Visibility.Hidden;
+            //trajectoire.Visibility = Visibility.Hidden;
         }
 
         public RadarViewModel radarViewModel = new RadarViewModel();
@@ -71,6 +73,8 @@ namespace WpfProject.Radar
                 UpdateWeather(SelectedFlight);
                 Border_Copy.Visibility = Visibility.Visible;
                 WeatherGrid1.Visibility = Visibility.Visible;
+                flightdetails.Visibility = Visibility.Visible;
+                trajectoire.Visibility = Visibility.Visible;
             }
             catch (Exception ex)
             {
@@ -95,6 +99,7 @@ namespace WpfProject.Radar
                 Weatherlabel.Content = weather;
                 Border.Visibility = Visibility.Visible;
                 WeatherGrid.Visibility = Visibility.Visible;
+                trajectoire.Visibility = Visibility.Visible;
 
                 string imagePath;
                 switch (weather)

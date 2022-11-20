@@ -74,7 +74,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="Flight details" Foreground="AliceBlue" Grid.Column="1" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="127" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Name="flightdetails" Content="Flight details" Foreground="AliceBlue" Grid.Column="1" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="127" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Button Content="Start Track" Grid.Column="2" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="133" Height="40" Click="Button_Click_1"/>
         <TextBox x:Name="Counter" Grid.Column="2" HorizontalAlignment="Left" Text="1" Height="40" Margin="432,10,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="86"/>
         <StackPanel x:Name="DetailsPanel" Grid.Column="1" HorizontalAlignment="Left" Height="295" Margin="6,20,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234">
@@ -102,7 +102,7 @@
             </m:Map.RenderTransform>
         </m:Map>
 
-        <Border  x:Name="Border" BorderBrush="#FFF06F6F" CornerRadius="15" BorderThickness="3" Height="123" Visibility="Visible" VerticalAlignment="Top" Grid.Column="1" Margin="25.6,192,46,0" Grid.Row="1">
+        <Border  x:Name="Border" BorderBrush="AliceBlue" CornerRadius="15" BorderThickness="3" Height="123" Visibility="Visible" VerticalAlignment="Top" Grid.Column="1" Margin="25.6,192,46,0" Grid.Row="1">
 
             <Grid x:Name="WeatherGrid" Margin="9.2,-0.8,-1.2,31.2" Grid.Column="1" Grid.Row="1" Visibility="Visible" d:LayoutOverrides="VerticalAlignment" >
 
@@ -115,7 +115,7 @@
 
             </Grid>
         </Border>
-        <Border x:Name="Border_Copy" BorderBrush="#FFF06F6F" CornerRadius="15" BorderThickness="3" Height="123" Visibility="Visible" VerticalAlignment="Top" Grid.Column="1" Margin="25.6,340,46,0" Grid.Row="1">
+        <Border x:Name="Border_Copy" BorderBrush="AliceBlue" CornerRadius="15" BorderThickness="3" Height="123" Visibility="Visible" VerticalAlignment="Top" Grid.Column="1" Margin="25.6,340,46,0" Grid.Row="1">
 
             <Grid x:Name="WeatherGrid1" Margin="9.2,-0.8,-1.2,31.2" Grid.Column="1" Grid.Row="1" Visibility="Visible" d:LayoutOverrides="VerticalAlignment" >
 
@@ -136,9 +136,9 @@
                 <RowDefinition Height="278*"/>
             </Grid.RowDefinitions>
 
-            <Image x:Name="trajectoire" Source="/images/trajectoire.PNG.jpeg" HorizontalAlignment="Left" Width="318" Visibility="Visible" Height="86" VerticalAlignment="Bottom" Margin="0,0,0,243"/>
-            <Label x:Name="FromCountry" Content="ORY" Foreground="AliceBlue" HorizontalAlignment="Left" Margin="80,86,0,0" FontWeight="Bold" FontSize="20" RenderTransformOrigin="-0.698,-0.544" Width="55" Height="49" VerticalAlignment="Top"/>
-            <Label x:Name="ToCountry" Content="TLV" Foreground="AliceBlue" HorizontalAlignment="Right" Margin="0,86,0,0" FontWeight="Bold" Width="69" FontSize="20" Height="63" VerticalAlignment="Top"/>
+            <Image x:Name="trajectoire" Source="/images/trajectoire.PNG.jpeg" HorizontalAlignment="Left" Width="318" Visibility="Collapsed" Height="86" VerticalAlignment="Bottom" Margin="0,0,0,243"/>
+            <!--<Label x:Name="FromCountry" Content="ORY" Foreground="AliceBlue" HorizontalAlignment="Left" Margin="80,86,0,0" FontWeight="Bold" FontSize="20" RenderTransformOrigin="-0.698,-0.544" Width="55" Height="49" VerticalAlignment="Top"/>
+            <Label x:Name="ToCountry" Content="TLV" Foreground="AliceBlue" HorizontalAlignment="Right" Margin="0,86,0,0" FontWeight="Bold" Width="69" FontSize="20" Height="63" VerticalAlignment="Top"/>-->
             <Label Content="{Binding airport.origin.name}"  Foreground="AliceBlue" HorizontalAlignment="Left" Width="155" Height="58" VerticalAlignment="Center"/>
             <Label Content="{Binding airport.destination.name}" Foreground="AliceBlue" Margin="176,0,0,0" HorizontalAlignment="Left" Width="170" Height="58" VerticalAlignment="Center"/>
 
@@ -151,7 +151,7 @@
 
             <TextBlock Text="{Binding status.text}" Foreground="AliceBlue" Grid.RowSpan="2"/>
             <TextBlock Text="{Binding time.estimated.arrival, Converter={StaticResource TickConvert}}" Margin="0,10,0,-10" Grid.RowSpan="2"/>
-            <Border  BorderThickness="5" BorderBrush="AliceBlue" CornerRadius="25" HorizontalAlignment="Left" Height="492" VerticalAlignment="Top" Width="380" Grid.RowSpan="2"/>
+            <Border  BorderThickness="5" BorderBrush="AliceBlue" CornerRadius="25" HorizontalAlignment="Left" Height="492" VerticalAlignment="Top" Width="380" Grid.RowSpan="2" Margin="-52,0,0,0"/>
         </Grid>
         <!--</Border>-->
 
