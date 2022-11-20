@@ -36,7 +36,29 @@
         </Style>
         <!--we can bind to a method, not this style-->
         <!--ObjectType="{x:Type helper:HelperClass}"-->
+        <Style TargetType="Button" x:Key="RoundButton">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"  />
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style TargetType="ListBox" x:Key="RoundList">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20" />
+                </Style>
 
+            </Style.Resources>
+        </Style>
+        <Style TargetType="TextBox" x:Key="RoundTextBox">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20" />
+                </Style>
+
+            </Style.Resources>
+        </Style>
         <ObjectDataProvider MethodName="GetDateTimeFromEpoch" x:Key="EpochConvert">
             <ObjectDataProvider.MethodParameters>
                 <system:Double>0</system:Double>
@@ -53,8 +75,8 @@
             <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="1258.667"/>
         </Grid.ColumnDefinitions>
-        <Button Name="ReadAllButton" Content="Read All" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Width="123" Height="40" Click="ReadAllButton_Click" />
-        <ListBox ItemsSource="{Binding}" Name="InFlightsListBox" HorizontalAlignment="Left" Height="100" Margin="31,54,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" SelectionChanged="FlightsListBox_SelectionChanged">
+        <Button  Background="#FC6586" Foreground="White" FontFamily="Times New Roman" Name="ReadAllButton" Style="{DynamicResource RoundButton}" Content="Read All" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Width="123" Height="40" Click="ReadAllButton_Click" />
+        <ListBox ItemsSource="{Binding}" Style="{DynamicResource RoundList}" Name="InFlightsListBox" HorizontalAlignment="Left" Height="100" Margin="31,54,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123" SelectionChanged="FlightsListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -63,9 +85,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="Incoming" Foreground="AliceBlue" HorizontalAlignment="Left" Margin="31,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="34" Width="77"/>
-        <Label Content="Outgoing" Foreground="AliceBlue" HorizontalAlignment="Left" Margin="34,184,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="26"/>
-        <ListBox ItemsSource="{Binding}" Name="OutFlightsListBox" HorizontalAlignment="Left" Height="100" Margin="34,215,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123"  SelectionChanged="FlightsListBox_SelectionChanged">
+        <Label Content="Incoming" FontFamily="Times New Roman" Foreground="AliceBlue" HorizontalAlignment="Left" Margin="31,20,0,0" Grid.Row="1" VerticalAlignment="Top" Height="34" Width="77"/>
+        <Label Content="Outgoing" FontFamily="Times New Roman" Foreground="AliceBlue" HorizontalAlignment="Left" Margin="34,184,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Height="26"/>
+        <ListBox Style="{DynamicResource RoundList}" ItemsSource="{Binding}" Name="OutFlightsListBox" HorizontalAlignment="Left" Height="100" Margin="34,215,0,0" Grid.Row="1" VerticalAlignment="Top" Width="123"  SelectionChanged="FlightsListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -74,23 +96,23 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Name="flightdetails" Content="Flight details" Foreground="AliceBlue" Grid.Column="1" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="127" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Content="Start Track" Grid.Column="2" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="133" Height="40" Click="Button_Click_1"/>
-        <TextBox x:Name="Counter" Grid.Column="2" HorizontalAlignment="Left" Text="1" Height="40" Margin="432,10,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="86"/>
-        <StackPanel x:Name="DetailsPanel" Grid.Column="1" HorizontalAlignment="Left" Height="295" Margin="6,20,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234">
-            <TextBlock Text="{Binding identification.callsign}" Foreground="AliceBlue"/>
-            <TextBlock Text="{Binding aircraft.registration}" Foreground="AliceBlue" Margin="0,0,-0.4,0"/>
-            <TextBlock Text="{Binding airline.name}" Foreground="AliceBlue"/>
-            <TextBlock Text="{Binding airport.destination.name}" Foreground="AliceBlue"/>
-            <TextBlock Text="{Binding airport.destination.position.country.name}" Foreground="AliceBlue"/>
-            <TextBlock Text="{Binding airport.origin.name}" Foreground="AliceBlue"/>
-            <TextBlock Text="{Binding airport.origin.position.country.name}" Foreground="AliceBlue"/>
-            <TextBlock Text="{Binding status.text}" Foreground="AliceBlue"/>
-            <TextBlock Text="{Binding time.estimated.arrival, Converter = {StaticResource TickConvert}}" Foreground="AliceBlue"/>
+        <Label Name="flightdetails" FontFamily="Times New Roman" FontStyle="Italic" Content="Flight details" FontWeight="Bold" FontSize="16" Foreground="AliceBlue" Grid.Column="1" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Top" Width="127" Height="54" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1"/>
+        <Button Background="#3DDDC2" FontFamily="Times New Roman" Foreground="White" Style="{DynamicResource RoundButton}" Content="Start Track" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="133" Height="40" Click="Button_Click_1"/>
+        <TextBox Style="{DynamicResource RoundTextBox}" x:Name="Counter" Grid.Column="1" HorizontalAlignment="Left" Text="1" Height="40" Margin="154,0,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Width="86"/>
+        <StackPanel x:Name="DetailsPanel" Grid.Column="1" HorizontalAlignment="Left" Height="295" Margin="6,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="234">
+            <TextBlock Text="{Binding identification.callsign}" FontFamily="Times New Roman" Foreground="AliceBlue"/>
+            <TextBlock Text="{Binding aircraft.registration}"  FontFamily="Times New Roman" Foreground="AliceBlue" Margin="0,0,-0.4,0"/>
+            <TextBlock Text="{Binding airline.name}" FontFamily="Times New Roman" Foreground="AliceBlue"/>
+            <TextBlock Text="{Binding airport.destination.name}" FontFamily="Times New Roman" Foreground="AliceBlue"/>
+            <TextBlock Text="{Binding airport.destination.position.country.name}" FontFamily="Times New Roman" Foreground="AliceBlue"/>
+            <TextBlock Text="{Binding airport.origin.name}" FontFamily="Times New Roman" Foreground="AliceBlue"/>
+            <TextBlock Text="{Binding airport.origin.position.country.name}" FontFamily="Times New Roman" Foreground="AliceBlue"/>
+            <TextBlock Text="{Binding status.text}" Foreground="AliceBlue" FontFamily="Times New Roman"/>
+            <TextBlock Text="{Binding time.estimated.arrival, Converter = {StaticResource TickConvert}}" FontFamily="Times New Roman" Foreground="AliceBlue"/>
         </StackPanel>
 
 
-        <m:Map x:Name="myMap"  CredentialsProvider="AqE_0hHQMLVjHSiX3mcf_JQWTuWuoWpyJD7n8PP-e_G3eq7wCEYEl12YHlpMMaCf" Margin="92,10,411,43" ZoomLevel="5.0" Center="32.000454,34.870743" AnimationLevel="None"  Grid.Column="2" Grid.Row="1" RenderTransformOrigin="0.5,0.5"
+        <m:Map x:Name="myMap"  CredentialsProvider="AqE_0hHQMLVjHSiX3mcf_JQWTuWuoWpyJD7n8PP-e_G3eq7wCEYEl12YHlpMMaCf" Margin="73,46,414,13" ZoomLevel="5.0" Center="32.000454,34.870743" AnimationLevel="None"  Grid.Column="2" Grid.Row="1" RenderTransformOrigin="0.5,0.5"
                >
             <m:Map.RenderTransform>
                 <TransformGroup>
@@ -106,7 +128,7 @@
 
             <Grid x:Name="WeatherGrid" Margin="9.2,-0.8,-1.2,31.2" Grid.Column="1" Grid.Row="1" Visibility="Visible" d:LayoutOverrides="VerticalAlignment" >
 
-                <Label Name="TemperatureLabel" Foreground="AliceBlue" Content="Weather : " Width="71" HorizontalAlignment="Left" Margin="0,0,0,-1.6" d:LayoutOverrides="LeftMargin, RightMargin"/>
+                <Label Name="TemperatureLabel" FontFamily="Times New Roman" Foreground="AliceBlue" Content="Weather : " Width="71" HorizontalAlignment="Left" Margin="0,0,0,-1.6" d:LayoutOverrides="LeftMargin, RightMargin"/>
 
                 <Label Name="DegreeLabel"  Foreground="AliceBlue" Content="27.3°C" Width="71" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20" Margin="0,30,0,0" Height="35" VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin"/>
                 <Label x:Name="Weatherlabel" Foreground="AliceBlue" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,-14"  Width="60" d:LayoutOverrides="LeftMargin, RightMargin" Height="32" VerticalAlignment="Bottom"/>
@@ -152,11 +174,10 @@
             <TextBlock Text="{Binding status.text}" Foreground="AliceBlue" Grid.RowSpan="2"/>
             <TextBlock Text="{Binding time.estimated.arrival, Converter={StaticResource TickConvert}}" Margin="0,10,0,-10" Grid.RowSpan="2"/>
             <Border  BorderThickness="5" BorderBrush="AliceBlue" CornerRadius="25" HorizontalAlignment="Left" Height="492" VerticalAlignment="Top" Width="380" Grid.RowSpan="2" Margin="-52,0,0,0"/>
-        </Grid>
-        <!--</Border>-->
 
-        <!--<ComboBox Text="Outgoing flights" Name="InFlightsComboBox" Loaded="ComboBox_Loaded_Outgoing"  Grid.Column="2" HorizontalAlignment="Left" Margin="691,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Destination}" SelectionChanged="FlightsListBox_SelectionChanged" />
-        <ComboBox  Text="Incoming flights" Name="OutFlightsComboBox" Loaded="ComboBox_Loaded_Incomimg" Grid.Column="2" HorizontalAlignment="Left" Margin="523,8,0,0" VerticalAlignment="Top" Width="120" SelectedItem="{Binding Source}" SelectionChanged="FlightsListBox_SelectionChanged"/>-->
+        </Grid>
+        <Button Background="#383660" FontFamily="Times New Roman" Foreground="White" Style="{DynamicResource RoundButton}" Grid.Column="2" Content="Home" HorizontalAlignment="Left" Margin="745,0,0,0" VerticalAlignment="Top" Height="30" RenderTransformOrigin="0.543,-0.441" Width="78" Click="Home_Click"/>
+
 
     </Grid>
 

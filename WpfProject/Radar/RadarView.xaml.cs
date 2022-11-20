@@ -18,6 +18,7 @@ using Microsoft.Maps.MapControl.WPF;
 using System.Windows.Threading;
 using DAL;
 using System.Diagnostics;
+using System.Windows.Navigation;
 
 namespace WpfProject.Radar
 {
@@ -265,38 +266,14 @@ namespace WpfProject.Radar
             UpdateFlight(SelectedFlight);
             Counter.Text = (Convert.ToInt32(Counter.Text) + 1).ToString();
         }
+       
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            Frame frame = (Application.Current.Radar as MainWindow).PageFrame;
+            frame.Navigate(new Uri("LoginPage.xaml", UriKind.RelativeOrAbsolute));
+        }
 
-        //private void ComboBox_Loaded_Outgoing(object sender, RoutedEventArgs e)
-        //{
-        //    var FlightKeys = dal.GetCurrentFlights();
-        //    List<string> data = new List<string>();
-        //    foreach (var flight in FlightKeys["Outgoing"])
-        //    {
-        //        data.Add(flight.Destination);
-        //    }
-        //    var combo = sender as ComboBox;
-        //    combo.ItemsSource = data;
-        //    combo.SelectedIndex = 0;
-        //}
 
-        //private void ComboBox_Loaded_Incomimg(object sender, RoutedEventArgs e)
-        //{
-        //    var FlightKeys = dal.GetCurrentFlights();
-        //    List<string> data = new List<string>();
-        //    foreach (var flight in FlightKeys["Incoming"])
-        //    {
-        //        data.Add(flight.Source);
-        //    }
-        //    var combo = sender as ComboBox;
-        //    combo.ItemsSource = data;
-        //    combo.SelectedIndex = 0;
 
-        //}
-        //private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        // var selectedcomboitem = sender as ComboBox;
-        //    string name = selectedcomboitem.SelectedItem as string;
-        //    MessageBox.Show(name);
-        //}
     }
 }
