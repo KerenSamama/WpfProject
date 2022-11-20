@@ -37,7 +37,9 @@ namespace BE
     {
         public List<HeDateParts> days { get; set; }
 
-        public Calendar() { days = new List<HeDateParts>(); }
+        
+            public Calendar() { days = new List<RootHeb>(); }
+        }
     }
 
 

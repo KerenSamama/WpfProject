@@ -11,7 +11,7 @@ namespace DAL
 {
     public interface IDAL
     {
-
+        string getEvent(DateTime start, DateTime end);
         #region Flights
 
         Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights(); // tous les vols 

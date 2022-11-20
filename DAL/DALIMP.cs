@@ -123,7 +123,23 @@ namespace DAL
             public DbSet<FlightInfoPartial> Flights { get; set; }
         }
 
-        
+        public Calendar getCalendar(DateTime start, DateTime end)
+        {
+            return calendarAdapter.getCalendar(start, end);
+        }
+
+        public string getEvent(DateTime start, DateTime end)
+        {
+            Calendar calendar = getCalendar(start, end);
+
+            if (calendar.days != null)
+            {
+                foreach (RootHeb day in calendar.days)
+                    if (!day.events[0].StartsWith("Parashat") && !day.events[0].StartsWith("Erev"))
+                        return day.events[0];
+            }
+            return null;
+        }
 
 
     }

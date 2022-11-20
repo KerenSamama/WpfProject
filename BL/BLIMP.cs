@@ -118,13 +118,12 @@ public FlightInfoPartial getVisibleFromFlight(Root myFlight)
 
         #region weather
         #endregion
-        /*
-        #region Calendar
+        
+         #region Calendar
         public string getHoliday()
         {
             return dal.getEvent(DateTime.Today, DateTime.Today.AddDays(7));
         }
         #endregion
-        */
     }
 }
