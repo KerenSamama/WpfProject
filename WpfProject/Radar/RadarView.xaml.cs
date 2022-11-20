@@ -113,7 +113,7 @@ namespace WpfProject.Radar
         }
         private async void UpdateWeatherTLV()
         {
-            using (var webClient = new System.Net.WebClient())
+            using (var webClient = new System.Net.WebClient()) 
             {
                 string URL = $"https://api.openweathermap.org/data/2.5/forecast?lat=32.109333&lon=34.855499&cnt=1&appid=88107aa04053a4cf2c34e7962481c7e3&units=metric";
                 var json = await webClient.DownloadStringTaskAsync(URL);
