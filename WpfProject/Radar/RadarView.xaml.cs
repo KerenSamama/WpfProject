@@ -269,8 +269,8 @@ namespace WpfProject.Radar
        
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            Frame frame = (Application.Current.Radar as MainWindow).PageFrame;
-            frame.Navigate(new Uri("LoginPage.xaml", UriKind.RelativeOrAbsolute));
+            //Frame frame = (Application.Current.Radar as MainWindow).PageFrame;
+            //frame.Navigate(new Uri("LoginPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
 
