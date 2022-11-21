@@ -16,6 +16,8 @@ using Newtonsoft.Json;
 using BE;
 using Microsoft.Maps.MapControl.WPF;
 using System.Windows.Threading;
+using PL;
+using WpfProject.HebCal;
 
 
 

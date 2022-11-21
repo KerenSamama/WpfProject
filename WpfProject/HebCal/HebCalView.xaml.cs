@@ -18,8 +18,10 @@ using Microsoft.Maps.MapControl.WPF;
 using System.Windows.Threading;
 using DAL;
 using System.Diagnostics;
+using PL;
 
-namespace PL
+
+namespace WpfProject.HebCal
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
