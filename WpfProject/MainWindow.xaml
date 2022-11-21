@@ -150,7 +150,8 @@
                         Name="ViewCalendar"
                         Foreground="White"
                         FontSize="15"
-                        FontWeight="Medium">
+                        FontWeight="Medium"
+                        Click="Button_for_Calendar">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="TextElement.FontFamily" Value="Font/#Dosis"/>
