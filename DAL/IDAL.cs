@@ -11,22 +11,14 @@ namespace DAL
 {
     public interface IDAL
     {
-        string getEvent(DateTime start, DateTime end);
-        #region Flights
+        
+     
 
         Dictionary<string, List<FlightInfoPartial>> GetCurrentFlights(); // tous les vols 
         Flight GetFlightData(string Key); //Un vol
 
 
-        #endregion
-
-        // List<FlightRecap> getAllFlightsSummarize();
-
-        //    Flight GetFlightByKey(string key);
-
-        //   string getEvent(DateTime start, DateTime end);
-        //Weather getWeather(Location location)();
-        //HebEvent getHebevent(Date date)();
+      
 
         List<FlightInfoPartial> GetAllFlightInDB();
         void SaveFlightToDB(FlightInfoPartial flight);

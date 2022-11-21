@@ -35,10 +35,10 @@ namespace BE
 
     public class Calendar
     {
-        public List<RootHeb> days { get; set; }
+        public List<HeDateParts> days { get; set; }
 
             
-            public Calendar() { days = new List<RootHeb>(); }
+            public Calendar() { days = new List<HeDateParts>(); }
         }
     }
 

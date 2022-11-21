@@ -43,31 +43,7 @@ namespace DAL
 
 
 
-        //LA FONCTION POUR RECUPERER LE CALENDRIER
-        /*
-            public Calendar getCalendar(DateTime start, DateTime end)
-            {
-                return calendarAdapter.getCalendar(start, end);
-            }
-        */
-
-        //LA FONCTION JAI PAS ENCORE REFLECHIS C'ETAIT QUOI
-
-        /*
-        public string getEvent(DateTime start, DateTime end)
-        {
-        Calendar calendar = getCalendar(start, end);
-
-        if (calendar.days != null)
-        {
-            foreach (HebDate day in calendar.days)
-                if (!day.events[0].StartsWith("Parashat") && !day.events[0].StartsWith("Erev"))
-                    return day.events[0];
-        }
-        return null;
-        */
-
-
+       
         // Function that returns all the flights between two dates
         public List<FlightInfoPartial> GetAllFlightInDB()
         {
@@ -123,23 +99,9 @@ namespace DAL
             public DbSet<FlightInfoPartial> Flights { get; set; }
         }
 
-        public Calendar getCalendar(DateTime start, DateTime end)
-        {
-            return calendarAdapter.getCalendar(start, end);
-        }
+        
 
-        public string getEvent(DateTime start, DateTime end)
-        {
-            Calendar calendar = getCalendar(start, end);
-
-            if (calendar.days != null)
-            {
-                foreach (RootHeb day in calendar.days)
-                    if (!day.events[0].StartsWith("Parashat") && !day.events[0].StartsWith("Erev"))
-                        return day.events[0];
-            }
-            return null;
-        }
+        
 
 
     }

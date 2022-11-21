@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,24 +12,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Newtonsoft.Json;
 using BE;
-
+using Microsoft.Maps.MapControl.WPF;
+using System.Windows.Threading;
+using DAL;
+using System.Diagnostics;
 
 namespace PL
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public  partial class HebCalView: Window
+    public  partial class HebCalView: UserControl
     {
-        public HebCalViewModel hcViewModel;
+        public HebCalViewModel hcViewModel = new HebCalViewModel();
+        public BE.Calendar Calendar = new BE.Calendar();
         public HebCalView()
-        {
-            hcViewModel = new HebCalViewModel();    
+        {  
             InitializeComponent();
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click_3(object sender, RoutedEventArgs e)
         {
             DateTime date = OriginalDate.SelectedDate.Value;
 

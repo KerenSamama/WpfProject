@@ -19,17 +19,6 @@ namespace BL
         Flight GetFlightData(string Key);
 
         void SaveFlight(FlightInfoPartial flightInfoPartial);
-
-
-        //GetWeatherInfo
-        //GetCalendarInfo
-        //  FlightInfoPartial GetVisibleInfo(string key);
-        //  FlightInfoPartial getVisibleFromFlight(Root myFlight);
-
-        //   List<FlightRecap> getAllFlights();
-        // Root GetFlightByKey(string key);
-        //  string getHoliday();
-
     }
     
 }

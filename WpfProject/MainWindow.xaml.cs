@@ -29,6 +29,7 @@ namespace PL
     public partial class MainWindow : Window
     {
         private RadarView radarView;
+        private HebCalView hebCalView;
         public MainWindow()
         {
             InitializeComponent();
@@ -44,7 +45,7 @@ namespace PL
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            
             if (!(MainWindowUC.Content is RadarView) )
             {
                 radarView = new RadarView();
@@ -63,7 +64,18 @@ namespace PL
 
         private void Button_for_Calendar(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hello, world!");
+            if (!(MainWindowUC.Content is HebCalView))
+            {
+                hebCalView = new HebCalView();
+            }
+            startButton.Visibility = Visibility.Hidden;
+            ViewCalendar.Visibility = Visibility.Hidden;
+            stp.Visibility = Visibility.Hidden;
+            deco.Visibility = Visibility.Hidden;
+            welcome.Visibility = Visibility.Hidden;
+            to.Visibility = Visibility.Hidden;
+            airplane.Visibility = Visibility.Hidden;
+            MainWindowUC.Content = hebCalView ;
         }
     }
 

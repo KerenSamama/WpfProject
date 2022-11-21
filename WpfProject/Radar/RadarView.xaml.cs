@@ -27,7 +27,7 @@ namespace WpfProject.Radar
     /// </summary>
     public partial class RadarView : UserControl
     {
-        public BE.Flight Flight = new BE.Flight();
+        public Flight Flight = new Flight();
         public RadarView()
         {
             InitializeComponent();
